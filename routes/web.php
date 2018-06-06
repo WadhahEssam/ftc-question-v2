@@ -19,10 +19,11 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::post('/checkAdmin' , 'Controller@checkAdmin') ;
+Route::post('/loginAdmin' , 'Controller@loginAdmin') ;
 
 // todo : this should be removed after production
 Route::get('/testAdmin' , function(){
     return view('admin') ;
 });
 
+Route::get('/admin' , 'Controller@' )->name('admin') ;

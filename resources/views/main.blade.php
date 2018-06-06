@@ -47,9 +47,9 @@
 
     <div dir="rtl" class="container" id="admin-login-menu" style="display:none">
 
-        <h1>تسجيل الدخول للمشرفين</h1>
+        <h1>دخول للمشرفين</h1>
         <div id="admin-login-home-button" class="home-button"><img width=30 src="images/home.png"></div>
-        <form id="register-admin-form" action="/checkAdmin" method="post" style="margin:5px 0px;" onsubmit="return submitForm()" >
+        <form id="register-admin-form" action="/loginAdmin" method="post" style="margin:5px 0px;" onsubmit="return submitForm()" >
             {!!  Form::token() !!}
             <label style="margin-left:36px;position:relative;right:20px;">كلمة المرور</label><input type="password" size=6 name="password"/>
 

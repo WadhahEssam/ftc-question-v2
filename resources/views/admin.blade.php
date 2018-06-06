@@ -13,9 +13,12 @@
 
     <div dir="rtl" class="container" id="admin-menu" style="display:none" >
 
-        <div class="main-button" id="watch-button" ><h2>مشاهدة</h2></div>
+        <div id="exit-button" class="exit-button"><img width=30 src="images/exit.png"></img></div>
+
+        <div class="main-button" id="watch-game-button" ><h2>مشاهدة</h2></div>
         <div class="main-button" id="add-questions-button" ><h2 >اضافة اسئلة</h2></div>
         <div class="main-button" id="results-button" ><h2 >النتائج</h2></div>
+        <div class="main-button" id="change-password-button" ><h2 >تغيير كلمة المرور</h2></div>
 
     </div>
 
@@ -104,6 +107,24 @@
 
     {{---------------------------------------------------------------------------------------------------------------------------------------------------}}
 
+    <div dir="rtl" class="container" id="change-password-menu" style="display:none" >
+        <div id="change-password-home-button" class="home-button"><img width=30 src="images/home.png"></img></div>
+
+        <h1>تغيير كلمة المرور </h1>
+        <form id="register-student-form" action="/chagneAdminPassword" method="post" style="margin:5px 0px;" onsubmit="return submitForm()" >
+            {!!  Form::token() !!}
+            <label style="margin-left:50px;position:relative;right:36px;">كلمة المرور القديمة</label><input type="password" name="old-password" size=6 name="id"/>
+            <br>
+            <label style="margin-left:53px;position:relative;right:38px;">كلمة المرور الجديدة</label><input type="password" name="new-password-1" size=6 name="id"/>
+            <br>
+            <label style="margin-left:30px;position:relative;right:17px;">كرر ادخال الكلمة الجديدة</label><input type="password" name="new-password-2" size=6 name="id"/>
+            <br>
+            <input type="submit" value="تغيير"/>
+        </form>
+
+    </div>
+
+    {{---------------------------------------------------------------------------------------------------------------------------------------------------}}
 
 @endsection
 
