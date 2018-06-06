@@ -1,6 +1,11 @@
 @extends('layouts\app')
 
-
+<?php
+    $password = "" ;
+    if ( session()->has('admin') ){
+        $password = session('admin') ;
+    }
+?>
 
 @section('head')
     <script src="js/login.js"></script>
@@ -10,10 +15,10 @@
 
     {{-----------------------------------------------------------------------------------------------}}
 
+    {{--todo : maybe i should make the student and admin buttons as a table so they appear next to each other , and also i might give them a pictures--}}
     <div class="container" id="login-menu" style="display:none">
         <div class="main-button" id="student-button" ><h2>طالب</h2></div>
         <div class="main-button" id="admin-button" ><h2 >مشرف</h2></div>
-
 
         <h2>هذا التحدي برعاية</h2>
         <h3>نادي تقنية المستقبل</h3>
@@ -51,7 +56,7 @@
         <div id="admin-login-home-button" class="home-button"><img width=30 src="images/home.png"></div>
         <form id="register-admin-form" action="/loginAdmin" method="post" style="margin:5px 0px;" onsubmit="return submitForm()" >
             {!!  Form::token() !!}
-            <label style="margin-left:36px;position:relative;right:20px;">كلمة المرور</label><input type="password" size=6 name="password"/>
+            <label style="margin-left:36px;position:relative;right:20px;">كلمة المرور</label><input value="{{$password}}" type="password" size=6 name="password"/>
 
             <br>
             <input type="submit" value="دخول"/>

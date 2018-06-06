@@ -52,11 +52,12 @@ body {
     margin:auto;
     margin-top:20px;
     border:1px solid rgba(255, 255, 255, 0.66);
+    min-width: 196px;
 }
 
 #admin-menu {
     background-color: rgba(45, 145, 205, 0.6);
-    height:325px ;
+    height:400px ;
 }
 
 #change-password-menu {
@@ -66,6 +67,11 @@ body {
 
 #login-menu {
     background-color: rgba(79, 79, 48, 0.43);
+    height:410px;
+}
+
+#show-questions-menu {
+    background-color: rgba(117, 192, 104, 0.6);
     height:410px;
 }
 
@@ -85,7 +91,7 @@ body {
 }
 
 #add-question-menu {
-    background-color: rgba(205, 45, 45, 0.6);
+    background-color: rgba(61, 66, 163, 0.43);
     height:480px;
 }
 
@@ -201,11 +207,11 @@ th {
 }
 
 #watch-game-button {
-    background-color: rgba(62, 204, 107, 0.7);
+    background-color: rgba(204, 62, 62, 0.7);
 }
 
 #watch-game-button:hover {
-    background-color: rgb(37, 151, 89);
+    background-color: rgba(132, 40, 40, 0.77);
 }
 
 
@@ -232,6 +238,15 @@ th {
 
 #results-button:hover {
     background-color:rgb(143, 145, 52);
+}
+
+#show-questions-button {
+    background-color:rgba(62, 204, 107, 0.7);
+    margin-bottom:15px;
+}
+
+#show-questions-button:hover {
+    background-color: rgba(44, 145, 76, 0.82);
 }
 
 #student-button {

@@ -35,6 +35,12 @@ $(document).ready(function(){
         })
     });
 
+    $("#show-questions-button").click(function(){
+        $("#admin-menu").fadeOut("fast" , function () {
+            $("#show-questions-menu").fadeIn("fast");
+        })
+    });
+
 
     // pressing the home button
 
@@ -62,12 +68,30 @@ $(document).ready(function(){
         });
     });
 
+    $("#show-questions-home-button").click(function(){
+        $("#show-questions-menu").fadeOut("fast" , function () {
+            $("#admin-menu").fadeIn("fast");
+        });
+    });
+
+
 
     // the log out button
     $("#exit-button").click(function(){
-        console.log('hi hi hi');
-        window.location.href = "/";
+        $("#admin-menu").fadeOut("fast" , function () {
+            window.location.href = "/";
+        }) ;
     });
 
 });
+
+
+// will be called before the submitting of the form
+function submitForm() {
+
+    $('#change-password-menu').fadeOut("fast");
+    $('#add-question-menu').fadeOut("fast");
+
+    return true ;
+}
 

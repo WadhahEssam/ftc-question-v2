@@ -26,4 +26,6 @@ Route::get('/testAdmin' , function(){
     return view('admin') ;
 });
 
-Route::get('/admin' , 'Controller@' )->name('admin') ;
+Route::get('/admin' , 'Controller@showAdminPage' )->name('admin') ;
+
+Route::post('/changeAdminPassword' , 'Controller@changeAdminPassword') ;
