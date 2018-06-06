@@ -1,0 +1,166 @@
+
+/* General */
+*{
+    margin:0px;
+    padding:0px;
+    word-wrap: break-word;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*direction:ltr ;*/
+}
+
+body {
+    /*todo : change the background pattern to a cool one*/
+    background-image:url('http://ftc-question-v2.com/images/pattern.png');
+    background-color:white;
+    text-align:center;
+    color:white;
+    font-weight:bold;
+    font-family: cairo , sans-serif ;
+    font-size:12px;
+}
+
+/* Main */
+.container {
+    position:absolute;
+    width:40% ;
+    padding:20px 20px 20px 20px;
+    min-width:300px;
+    margin:auto;
+    border:1px solid rgba(112, 112, 111,0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    vertical-align: center;
+}
+
+.container-content {
+    position:relative;
+    margin:auto;
+}
+
+.main-button {
+    padding:10px 0px;
+    border-radius:5px;
+    width:50%;
+    margin:auto;
+    margin-top:20px;
+    border:1px solid rgba(255, 255, 255, 0.66);
+}
+
+#admin-menu {
+    background-color: rgba(45, 145, 205, 0.6);
+    height:243px ;
+}
+
+#login-menu {
+    background-color: rgba(13, 13, 11, 0.61);
+    height:410px;
+}
+
+#admin-login-menu {
+    background-color: rgba(45, 145, 205, 0.6);
+    height:142px;
+}
+
+#student-login-menu {
+    background-color: rgba(205, 45, 45, 0.6);
+    height:325px;
+}
+
+/* Minor */
+
+input {
+    margin:3px;
+    width:40%;
+    height:25px;
+    border-radius:6px;
+    border:none;
+    font-weight: bold;
+    font-family: cairo , sans-serif ;
+    padding:0px 10px;
+
+}
+
+input[type=submit] {
+    margin-top:10px;
+    width:30%;
+    height:40px;
+    background-color:#4CAF50;
+    color:white;
+
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+input[type=text] {
+    direction:ltr;
+}
+
+#logos-table , #login-table {
+    margin: 0 auto ;
+}
+
+#watch {
+    background-color: rgba(62, 204, 107, 0.7);
+}
+
+#watch:hover {
+    background-color: rgb(37, 151, 89);
+}
+
+#add-questions {
+    background-color: rgba(94, 80, 204, 0.7);
+}
+
+#add-questions:hover{
+    background-color: rgb(80, 53, 163);
+}
+
+#results {
+    background-color:rgba(201, 204, 69,0.7);
+    margin-bottom:15px;
+}
+
+#results:hover {
+    background-color:rgb(143, 145, 52);
+}
+
+#student-button {
+    background-color: rgba(205, 45, 45, 0.6);
+}
+
+#student-button:hover {
+    background-color: rgba(147, 32, 32, 0.72);
+}
+
+#admin-button {
+    background-color: rgba(45, 145, 205, 0.6);
+    margin-bottom:30px;
+}
+
+#admin-button:hover {
+    background-color: rgba(40, 107, 157, 0.75);
+}
+
+.home-button {
+    width:30px;
+    height:30px;
+    padding:4px 3.5px 3px 3px;
+    background:rgba(256,256,256,0.5);
+    border-radius:50%;
+    position:absolute;
+    top:10px;
+    left:10px;
+}
+.home-button:hover {
+    background-color:rgba(0,0,0,0.5);
+}
