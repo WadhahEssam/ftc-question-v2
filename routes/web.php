@@ -21,3 +21,8 @@ Route::get('/', function () {
 
 Route::post('/checkAdmin' , 'Controller@checkAdmin') ;
 
+// todo : this should be removed after production
+Route::get('/testAdmin' , function(){
+    return view('admin') ;
+});
+

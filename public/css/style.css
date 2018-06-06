@@ -71,8 +71,48 @@ body {
 
 #student-login-menu {
     background-color: rgba(205, 45, 45, 0.6);
-    height:325px;
+    height: 325px;
 }
+
+#watch-game-menu {
+    background-color: rgba(205, 45, 45, 0.6);
+    height:500px;
+}
+
+#add-question-menu {
+    background-color: rgba(205, 45, 45, 0.6);
+    height:480px;
+}
+
+#results-menu {
+    background-color: rgba(205, 188, 34, 0.6);
+    height:500px;
+    overflow-y:scroll ;
+}
+
+#results-menu::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+
+}
+
+#results-menu::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+
+}
+
+#results-menu::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: #000000;
+
+}
+
+
 
 /* Minor */
 
@@ -105,32 +145,78 @@ input[type=text] {
     direction:ltr;
 }
 
+textarea {
+    height:100px;
+    width:80%;
+    max-width:90%;
+    border-radius:8px;
+    border:none;
+    font-weight: bold;
+    font-family: cairo , sans-serif ;
+    padding:0px 10px;
+    direction:ltr;
+}
+
+select {
+    margin-top:10px;
+    width:40px;
+    height:30px;
+    border-radius:6px;
+    font-weight:bold;
+    font-family: cairo , sans-serif ;
+    font-size:12px;
+}
+
+#uploadfile {
+    display:none;
+}
+
+#browse-label {
+    background-color: rgba(51, 94, 99, 0.76);
+    padding: 5px 15px 10px 9px;
+    margin: 20px;
+    border-radius: 5px;
+    position: relative;
+    top: 10px;
+}
+
+
 #logos-table , #login-table {
     margin: 0 auto ;
 }
 
-#watch {
+#results-table {
+    margin: 0 auto ;
+    padding-top:30px;
+}
+
+
+th {
+    padding:10px ;
+}
+
+#watch-button {
     background-color: rgba(62, 204, 107, 0.7);
 }
 
-#watch:hover {
+#watch-button:hover {
     background-color: rgb(37, 151, 89);
 }
 
-#add-questions {
+#add-questions-button {
     background-color: rgba(94, 80, 204, 0.7);
 }
 
-#add-questions:hover{
+#add-questions-button:hover{
     background-color: rgb(80, 53, 163);
 }
 
-#results {
+#results-button {
     background-color:rgba(201, 204, 69,0.7);
     margin-bottom:15px;
 }
 
-#results:hover {
+#results-button:hover {
     background-color:rgb(143, 145, 52);
 }
 
@@ -162,5 +248,20 @@ input[type=text] {
     left:10px;
 }
 .home-button:hover {
+    background-color:rgba(0,0,0,0.5);
+}
+
+.refresh-button {
+    width:30px;
+    height:30px;
+    padding:4px 3.5px 3px 3px;
+    background:rgba(256,256,256,0.5);
+    border-radius:50%;
+    position:absolute;
+    top:10px;
+    right:10px;
+}
+
+.refresh-button:hover {
     background-color:rgba(0,0,0,0.5);
 }
