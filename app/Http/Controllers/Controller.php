@@ -7,27 +7,32 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests ;
+use App\Question ;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    //todo: remember to delete this
+    public function test () {
+        Question::find(41)->delete() ;
+//        return view ('test' , ['me'=>$message]) ;
+    }
 
     public function loginAdmin ( Request $request ) {
         //reading the passwords file
         $myfile = fopen("password.mtv", "r") or die("Unable to open file!");
         $password = fread($myfile,filesize("password.mtv"));
         fclose($myfile);
-        echo $password ;
-        echo $request->password ;
+
         //checking if the password is the same
         if ($request->password == $password) {
-            session()->put('admin' , $password ) ;
-
+            session()->put('admin' , 'true' ) ;
             return redirect('/admin') ;
         } else {
-            $message="The password is wrong" ;
-            return redirect('/' );
+            $message="كلمة المرور خاطئة" ;
+            return view('main' )->with('message' , $message);
         }
     }
 
@@ -40,19 +45,25 @@ class Controller extends BaseController
 //        return ' ' . $oldPassword . ' ' . $request->newPassword1 . ' '  . $request->oldPassword ;
         if ( $request->newPassword1 == $request->newPassword2 ) {
             if ( $request->oldPassword == $oldPassword ) {
-                $myfile = fopen("password.mtv", "w") or die("Unable to open file!");
-                $txt = $request->newPassword1;
-                fwrite($myfile, $txt);
-                fclose($myfile);
-                session()->put('admin', $request->newPassword1) ;
-                return redirect('/admin') ;
+                if ( strlen($request->newPassword1) > 0) {
+                    $myfile = fopen("password.mtv", "w") or die("Unable to open file!");
+                    $txt = $request->newPassword1;
+                    fwrite($myfile, $txt);
+                    fclose($myfile);
+                    session()->put('admin', 'true') ;
+                    $message = 'تم تغيير كلمة المرور' ;
+                    return view('admin' , ['message'=>$message]) ;
+                } else {
+                    $message="كلمة المرور يجب ان لا تكون فارغة" ;
+                    return view('admin' , ['message'=>$message] );
+                }
             } else {
-                $message="The old password is wrong" ;
-                return redirect('/admin' );
+                $message="كلمة المرور الحالية خاطئة" ;
+                return view('admin' , ['message'=>$message] );
             }
         } else {
-            $message="New passwords don't match" ;
-            return redirect('/admin' );
+            $message="كلمات المرور لا تتطابق" ;
+            return view('admin', ['message'=>$message] );
         }
     }
 
@@ -60,8 +71,8 @@ class Controller extends BaseController
         if (session()->has('admin') ) {
             return view('admin') ;
         } else {
-            $message = "Only Admin can see this page" ;
-            return redirect('/') ;
+            $message = "المشرفون فقط من يمكنهم رؤية هذه الصفحة" ;
+            return view('admin' , ['message'=>$message]) ;
         }
     }
 

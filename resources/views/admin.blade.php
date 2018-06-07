@@ -33,15 +33,15 @@
 
     {{---------------------------------------------------------------------------------------------------------------------------------------------------}}
 
-    <div dir="rtl" class="container" id="add-question-menu" style="display:none"  >
+    <div dir="rtl" class="container" id="add-question-menu" @if( isset($menu) ) @if ( $menu != 'add_question') style="display:none"  @endif @else style="display:none" @endif >
 
         <div id="add-question-home-button" class="home-button"><img width=30 src="images/home.png"></img></div>
 
         <h1>اضافة سؤال </h1>
         <br>
-        <h3>السؤال :</h3>
 
-        {!! Form::open(['method'=>'post' , 'url'=>'/addQuestion' , 'files'=>true , 'style'=>'margin:5px 0px;' , 'onsubmit'=>'return submitForm()']) !!}
+
+        {!! Form::open(['method'=>'post' , 'url'=>'/addQuestion' , 'files'=>true , 'style'=>'margin:5px 0px;']) !!}
             <textarea name="question"></textarea> <br>
             <label style="margin-left:5px">الخيار 1</label><input type="text" name="option1"/><br>
             <label style="margin-left:5px">الخيار 2</label><input type="text" name="option2"/><br>
@@ -59,7 +59,7 @@
                 </select>
 
                 <label style="margin-left:5px;margin-right:10px">صعوبة السؤال :</label>
-                <select name="question-dif">
+                <select name="dif">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -74,43 +74,24 @@
 
     {{---------------------------------------------------------------------------------------------------------------------------------------------------}}
 
-    <div dir="rtl" class="container" id="show-questions-menu" style="display:none" >
+    <div dir="rtl" class="container" id="show-questions-menu" @if( isset($menu) ) @if ( $menu != 'show_questions') style="display:none"  @endif @else style="display:none" @endif >
         <div id="show-questions-home-button" class="home-button"><img width=30 src="images/home.png"></img></div>
         <div id="show-questions-refresh-button" class="refresh-button"><img width=30 src="images/refresh.png"></img></div>
+
+        <div id="questions-container">
+            <p>لا توجد اسئلة</p>
+        </div>
 
     </div>
 
     {{---------------------------------------------------------------------------------------------------------------------------------------------------}}
 
-    <div dir="rtl" class="container" id="results-menu"  style="display:none">
+    <div dir="rtl" class="container" id="results-menu"  style="display:none" >
         <div id="results-home-button" class="home-button"><img width=30 src="images/home.png"></img></div>
         <div id="refresh-button" class="refresh-button"><img width=30 src="images/refresh.png"></img></div>
+        <div id="results-container">
 
-        <table id="results-table">
-            {{--todo : i might add a way to increse desplaied info without making it ugly as fuck--}}
-            <tr>
-                <th>اسم الاول</th>
-                {{--<th>رقم الاول</th>--}}
-                <th>نقاط الاول</th>
-
-                <th>اسم الثاني</th>
-                {{--<th>رقم الثاني</th>--}}
-                <th>نقاط الثاني</th>
-
-                {{--<th>الفائز</th>--}}
-            </tr>
-            <tr>
-                <td>وضاح</td>
-                {{--<td>435108270</td>--}}
-                <td>107</td>
-
-                <td>ريان</td>
-                {{--<td>435698555</td>--}}
-                <td>65</td>
-
-                {{--<td>وضاح</td>--}}
-            </tr>
-        </table>
+        </div>
 
     </div>
 
@@ -122,9 +103,9 @@
         <h1>تغيير كلمة المرور </h1>
         <form id="register-student-form" action="/changeAdminPassword" method="post" style="margin:5px 0px;" onsubmit="return submitForm()" >
             {!!  Form::token() !!}
-            <label style="margin-left:50px;position:relative;right:36px;">كلمة المرور القديمة</label><input type="password" name="oldPassword" size=6 name="id"/>
+            <label style="margin-left: 57px;position: relative;right: 44px;">كلمة المرور الحالية</label><input type="password" name="oldPassword" size=6 name="id"/>
             <br>
-            <label style="margin-left:53px;position:relative;right:38px;">كلمة المرور الجديدة</label><input type="password" name="newPassword1" size=6 name="id"/>
+            <label style="margin-left: 52px;position: relative;right: 39px;;">كلمة المرور الجديدة</label><input type="password" name="newPassword1" size=6 name="id"/>
             <br>
             <label style="margin-left:30px;position:relative;right:17px;">كرر ادخال الكلمة الجديدة</label><input type="password" name="newPassword2" size=6 name="id"/>
             <br>
@@ -134,6 +115,8 @@
     </div>
 
     {{---------------------------------------------------------------------------------------------------------------------------------------------------}}
+
+    @include('message')
 
 @endsection
 

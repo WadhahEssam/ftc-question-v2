@@ -20,12 +20,14 @@ $(document).ready(function(){
     $("#student-button").click(function(){
         $("#login-menu").fadeOut("fast" , function () {
             $("#student-login-menu").fadeIn("fast");
+            $('#message').fadeOut('fast');
         });
     });
 
     $("#admin-button").click(function(){
         $("#login-menu").fadeOut("fast" , function () {
             $("#admin-login-menu").fadeIn("fast");
+            $('#message').fadeOut('fast');
         })
     });
 

@@ -3,7 +3,12 @@
 $(document).ready(function(){
 
     // starting the website
-    if(  $("#admin-menu").is(":visible") != true &&  $("#watch-game-menu").is(":visible") != true  && $("#add-question-menu").is(":visible") != true  && $("#results-menu").is(":visible") != true )
+
+    $("#questions-container").load('/questions') ;
+    $("#results-container").load('/results') ;
+
+
+    if(  $("#admin-menu").is(":visible") != true &&  $("#watch-game-menu").is(":visible") != true  && $("#add-question-menu").is(":visible") != true  && $("#results-menu").is(":visible") != true &&  $("#show-questions-menu").is(":visible") != true)
     {
         $("#admin-menu").fadeIn("slow");
     }
@@ -14,30 +19,36 @@ $(document).ready(function(){
     $("#watch-game-button").click(function(){
         $("#admin-menu").fadeOut("fast" , function () {
             $("#watch-game-menu").fadeIn("fast");
+            $('#message').fadeOut('fast');
         });
     });
 
     $("#add-questions-button").click(function(){
         $("#admin-menu").fadeOut("fast" , function () {
             $("#add-question-menu").fadeIn("fast");
+            $('#message').fadeOut('fast');
         })
     });
 
     $("#results-button").click(function(){
         $("#admin-menu").fadeOut("fast" , function () {
             $("#results-menu").fadeIn("fast");
+            $('#message').fadeOut('fast');
         })
     });
 
     $("#change-password-button").click(function(){
         $("#admin-menu").fadeOut("fast" , function () {
             $("#change-password-menu").fadeIn("fast");
+            $('#message').fadeOut('fast');
         })
     });
 
     $("#show-questions-button").click(function(){
         $("#admin-menu").fadeOut("fast" , function () {
             $("#show-questions-menu").fadeIn("fast");
+            $('#message').fadeOut('fast');
+            $("#questions-container").load('/questions') ;
         })
     });
 
@@ -81,7 +92,13 @@ $(document).ready(function(){
         $("#admin-menu").fadeOut("fast" , function () {
             window.location.href = "/";
         }) ;
+        $('#message').fadeOut('fast');
     });
+
+    $("#show-questions-refresh-button").click(function () {
+        $("#questions-container").load('/questions') ;
+    });
+
 
 });
 
@@ -91,6 +108,7 @@ function submitForm() {
 
     $('#change-password-menu').fadeOut("fast");
     $('#add-question-menu').fadeOut("fast");
+    $('#show-questions-menu').fadeOut("fast");
 
     return true ;
 }

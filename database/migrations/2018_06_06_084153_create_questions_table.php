@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->string('option2') ;
             $table->string('option3') ;
             $table->string('option4') ;
-            $table->string('image-path') ;
+            $table->string('imagePath') ;
             $table->tinyInteger('answer') ;
             $table->tinyInteger('dif') ;
             $table->timestamps();
