@@ -4,7 +4,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    public $numberOfRecords = 50 ;
+    public $numberOfQuestions = 50 ;
+    public $numberOfResults = 20 ;
     /**
      * Seed the application's database.
      *
@@ -12,7 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for ( $i = 0 ; $i < $this->numberOfRecords ; $i++)
+        // for the questions database
+        for ( $i = 0 ; $i < $this->numberOfQuestions ; $i++)
             DB::table('questions' )->insert([
                 'question' =>  $this->createQuestion() ,
                 'option1' => $this->createOption() ,
@@ -24,6 +26,17 @@ class DatabaseSeeder extends Seeder
                 'dif' => rand(1,3) ,
             ]);
 
+        // for the results database
+        for ( $i = 0 ; $i < $this->numberOfResults ; $i++)
+            DB::table('results' )->insert([
+                'first_student_name' => str_random(rand(3,8)) ,
+                'first_student_id' => rand(430000000 , 438000000) ,
+                'first_student_points' => rand(20,200),
+                'second_student_name' => str_random(rand(3,8)) ,
+                'second_student_id' => rand(430000000 , 438000000) ,
+                'second_student_points' => rand(20,200),
+                'winner' => rand(1,2),
+            ]);
     }
 
     private function createQuestion() {

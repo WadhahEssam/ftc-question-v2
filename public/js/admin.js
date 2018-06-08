@@ -34,6 +34,7 @@ $(document).ready(function(){
         $("#admin-menu").fadeOut("fast" , function () {
             $("#results-menu").fadeIn("fast");
             $('#message').fadeOut('fast');
+            $("#results-container").load('/results') ;
         })
     });
 
@@ -95,8 +96,14 @@ $(document).ready(function(){
         $('#message').fadeOut('fast');
     });
 
+    // the show questions refresh button
     $("#show-questions-refresh-button").click(function () {
         $("#questions-container").load('/questions') ;
+    });
+
+    // the results refresh button
+    $("#refresh-button").click(function () {
+        $("#results-container").load('/results') ;
     });
 
 

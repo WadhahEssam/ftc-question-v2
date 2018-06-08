@@ -7,6 +7,9 @@
 */
 
 //todo : remember to delete this
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('test' , 'Controller@test' ) ;
 
 Auth::routes();
@@ -23,7 +26,6 @@ Route::post('/loginAdmin' , 'Controller@loginAdmin') ;
 //Route::get('/testAdmin' , function(){
 //    return view('admin') ;
 //});
-
 
 Route::get('/admin' , 'Controller@showAdminPage' )->name('admin') ;
 
@@ -47,6 +49,8 @@ Route::delete('/deleteQuestion' , 'QuestionsController@deleteQuestion') ;
 | Results
 |--------------------------------------------------------------------------
 */
+
+Route::get('/results' , 'ResultsController@getResults') ;
 
 
 

@@ -15,12 +15,12 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first-student-name');
-            $table->string('first-student-id');
-            $table->integer('first-student-points') ;
-            $table->string('second-student-name');
-            $table->string('second-student-id');
-            $table->integer('second-student-points') ;
+            $table->string('first_student_name');
+            $table->string('first_student_id');
+            $table->integer('first_student_points') ;
+            $table->string('second_student_name');
+            $table->string('second_student_id');
+            $table->integer('second_student_points') ;
             $table->tinyInteger('winner') ;
             $table->timestamps();
         });

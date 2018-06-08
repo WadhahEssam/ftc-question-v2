@@ -1,27 +1,39 @@
 
+@if (count($results))
 
-<table id="results-table">
-    {{--todo : i might add a way to increse desplaied info without making it ugly as fuck--}}
-    <tr>
-        <th>اسم الاول</th>
-        {{--<th>رقم الاول</th>--}}
-        <th>نقاط الاول</th>
+    <h3>عدد المباريات </h3>
+    <p>{{count($results)}}</p>
 
-        <th>اسم الثاني</th>
-        {{--<th>رقم الثاني</th>--}}
-        <th>نقاط الثاني</th>
+    <table id="results-table">
+        {{--todo : i might add a way to increse desplaied info without making it ugly as fuck--}}
+        <tr>
+            <th>رقم المباراة</th>
 
-        {{--<th>الفائز</th>--}}
-    </tr>
-    <tr>
-        <td>وضاح<br>435108270</td>
-        {{--<td>435108270</td>--}}
-        <td>107</td>
+            <th>اسم الاول</th>
 
-        <td>ريان<br>466958445</td>
-        {{--<td>435698555</td>--}}
-        <td>65</td>
+            <th>نقاط الاول</th>
 
-        {{--<td>وضاح</td>--}}
-    </tr>
-</table>
+            <th>اسم الثاني</th>
+
+            <th>نقاط الثاني</th>
+
+
+            {{--<th>الفائز</th>--}}
+
+
+        @foreach($results as $result)
+        <tr>
+            <td>{{$loop->index + 1}}</td>
+            <td @if($result->winner == 1) style="color:rgba(61,128,66,0.76)" @else style="color:rgba(255,77,77,0.74)" @endif >{{$result->first_student_name}}<br>{{$result->first_student_id}}</td>
+            <td @if($result->winner == 1) style="color:rgba(61,128,66,0.76)" @else style="color:rgba(255,77,77,0.74)" @endif >{{$result->first_student_points}}</td>
+
+            <td  @if($result->winner == 2) style="color:rgba(61,128,66,0.76)" @else style="color:rgba(255,77,77,0.74)" @endif> {{$result->second_student_name}}<br>{{$result->second_student_id}}</td>
+            <td  @if($result->winner == 2) style="color:rgba(61,128,66,0.76)" @else style="color:rgba(255,77,77,0.74)" @endif>{{$result->second_student_points}}</td>
+        </tr>
+        @endforeach
+
+
+    </table>
+@else
+    <p>لا توجد نتائج</p>
+@endif
