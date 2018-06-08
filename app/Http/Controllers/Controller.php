@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use App\Http\Requests ;
 use App\Question ;
+use App\Events\TestEvent ;
 
 class Controller extends BaseController
 {
@@ -16,8 +17,8 @@ class Controller extends BaseController
 
     //todo: remember to delete this
     public function test () {
-        Question::find(41)->delete() ;
-//        return view ('test' , ['me'=>$message]) ;
+        $message = 'what the hell is going on' ;
+        event(new TestEvent( $message ));
     }
 
     public function loginAdmin ( Request $request ) {

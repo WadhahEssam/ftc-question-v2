@@ -9,7 +9,6 @@
 
     {{-----------------------------------------------------------------------------------------------}}
 
-    {{--todo : maybe i should make the student and admin buttons as a table so they appear next to each other , and also i might give them a pictures--}}
     <div class="container" id="login-menu" style="display:none">
 
         <table id='role-table'>
@@ -40,13 +39,13 @@
         <div id="student-login-home-button" class="home-button"><img width=30 src="images/home.png"></div>
 
         <h1>التسجيل </h1>
-        <form id="register-student-form" action="/newStudent" method="post" style="margin:5px 0px;" onsubmit="return submitForm()" >
+        {!! Form::open(['action'=>'MatchController@registerStudent' , 'method' => 'post' , 'id'=>'register-student-form' , 'style'=>'margin:5px 0px;' , 'onsubmit'=>'return submitForm()' ]) !!}
             {!!  Form::token() !!}
             <label style="margin-left:5px">اسم الطالب / الطالبة</label><input type="text" name="name"/><br>
             <label style="margin-left:36px;position:relative;right:20px;">الرقم الجامعي</label><input type="number" size=6 name="id"/>
             <br>
             <input type="submit" value="ابدأ"/>
-        </form>
+        {!! Form::close() !!}
     </div>
 
     {{------------------------------------------------------------------------------------------------}}

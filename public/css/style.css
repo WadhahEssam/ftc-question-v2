@@ -50,6 +50,24 @@ div {
     margin:auto;
 }
 
+#waiting-menu {
+    background-color: rgba(205, 45, 45, 0.6);
+    height:200px ;
+}
+
+#ready-menu {
+    background-color: rgba(205, 45, 45, 0.6);
+    height:200px ;
+}
+
+#match-menu {
+    margin-top:20px;
+    background-color: rgba(205, 45, 45, 0.6);
+    overflow-y:auto;
+    position: relative;
+    height: 100%;
+}
+
 .main-button {
     padding:10px 0px;
     border-radius:5px;
@@ -102,9 +120,6 @@ div {
     background-color: #000000;
 
 }
-
-
-
 
 #admin-login-menu {
     background-color: rgba(45, 145, 205, 0.6);
@@ -222,10 +237,27 @@ select {
     top: 10px;
 }
 
+#current-question-container {
+}
 
-#logos-table , #login-table , #questions-table{
+table {
+    border-collapse: collapse;
+}
+
+/* remove padding */
+td, th {
+    padding: 0;
+}
+
+#logos-table , #login-table , #questions-table {
     margin: 0 auto ;
 }
+
+#current-question-table {
+    margin:  auto ;
+    margin-top: -4px;
+}
+
 
 #role-table {
     margin: 0 auto ;
@@ -237,6 +269,79 @@ select {
     padding-top:30px;
 }
 
+#running-match-stats-table {
+    margin: 0 auto ;
+    padding-top:5px;
+}
+
+.running-match-stats-table-data {
+    padding: 0px 36px;
+    background: rgba(91,179,93,1);
+    background: -moz-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(91,179,93,1)), color-stop(100%, rgba(143,219,68,0.72)));
+    background: -webkit-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: -o-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: linear-gradient(135deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5bb35d', endColorstr='#8fdb44', GradientType=1 );
+    border-radius: 15px;
+    width: 40%;
+}
+
+#question-table-data {
+    background: #9c4a4aa6;
+    padding: 20px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.option-table-data {
+    padding:10px;
+    background: #f4a92ba6;
+}
+
+.option-table-data:hover {
+    background: rgba(61, 66, 163, 0.68);
+}
+
+#option-data-table-1 {
+    border-right: 1px solid #9c4a4a75;
+    border-bottom: 1px solid #9c4a4a75;
+}
+
+#option-data-table-2 {
+    border-bottom: 1px solid #9c4a4a75;
+}
+
+#option-data-table-3 {
+    border-radius: 0px 0px 0px 10px;
+    border-right: 1px solid #9c4a4a75;
+}
+
+#option-data-table-4 {
+    border-radius: 0px 0px 10px 0px;
+}
+
+#points {
+    background: #4798628c;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+#timer {
+    border-radius: 59%;
+    background: #d0a8a8;
+    padding: 15px;
+    width: 76px;
+    height: 69px;
+    position: relative;
+    margin: auto;
+    top: 10px;
+}
+
+#question-image {
+    border-radius:10px;
+    margin-bottom: -12px;
+}
 
 th {
     padding:10px ;
@@ -399,4 +504,22 @@ th {
 #delete-button:hover {
     background: rgba(146, 39, 39, 0.8);
     min-width: 60px;
+}
+
+
+
+
+@media only screen and (max-device-width: 480px) {
+
+    .option:hover {
+        background-color: rgb(170, 123, 66);
+    }
+
+    .running-match-stats-table-data {
+        padding:10px 30px ;
+        background: #69da69de;
+        border-radius: 15px;
+        width: 100px;
+    }
+
 }

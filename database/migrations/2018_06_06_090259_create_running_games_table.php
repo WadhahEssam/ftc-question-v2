@@ -15,15 +15,15 @@ class CreateRunningGamesTable extends Migration
     {
         Schema::create('running_games', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user-1-ready') ;
-            $table->string('user-2-ready') ;
-            $table->string('user-1-name') ;
-            $table->string('user-2-name') ;
-            $table->integer('user-1-points') ;
-            $table->integer('user-2-points') ;
-            $table->string('user-1-answer') ;
-            $table->string('user-2-answer') ;
-            $table->integer('question-id') ; 
+            $table->tinyInteger('user_1_ready') ;
+            $table->tinyInteger('user_2_ready') ;
+            $table->string('user_1_name') ;
+            $table->string('user_2_name') ;
+            $table->integer('user_1_points') ;
+            $table->integer('user_2_points') ;
+            $table->tinyInteger('user_1_answer') ;
+            $table->tinyInteger('user_2_answer') ;
+            $table->integer('question_id') ;
             $table->timestamps();
         });
     }

@@ -54,6 +54,18 @@ Route::get('/results' , 'ResultsController@getResults') ;
 
 
 
+/*
+|--------------------------------------------------------------------------
+| Match
+|--------------------------------------------------------------------------
+*/
 
+Route::post('/registerStudent' , 'MatchController@registerStudent') ;
 
+//todo: this should be deleted
+Route::get('/resetMatch' , 'MatchController@resetMatch') ;
+
+Route::get('/selectQuestions' , 'MatchController@selectQuestionsForNextRound') ;
+
+Route::get('/selectedQuestions' , 'MatchController@getSelectedQuestions') ;
 

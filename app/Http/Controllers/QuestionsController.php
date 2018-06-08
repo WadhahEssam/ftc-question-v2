@@ -40,12 +40,11 @@ class QuestionsController extends Controller
     }
 
     public function getQuestions() {
-
         $questions = Question::all() ;
         return view('questions' , ['questions'=>$questions ]) ;
     }
 
-
+    //todo : i have to delete the image in the file if there is an image
     public function deleteQuestion (Request $request) {
         if ( session()->has('admin') ) {
             $question = Question::find($request->id);
