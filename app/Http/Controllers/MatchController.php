@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GameEvent;
+use App\Events\NextQuesiton;
 use App\Events\Player2Ready;
+use App\Events\PlayersAreReadyToStart ;
 use App\Question;
 use App\SelectedQuestion;
 use Illuminate\Http\Request;
 use App\RunningGame ;
+use Whoops\Run;
+
 
 class MatchController extends Controller
 {
@@ -19,38 +24,45 @@ class MatchController extends Controller
         $game->user_2_name = 'null' ;
         $game->user_1_points = 0 ;
         $game->user_2_points = 0 ;
+        $game->user_1_answer = 0 ;
+        $game->user_2_answer = 0 ;
         $game->save() ;
 
         return 'the match has been reset ' ;
     }
 
-    public function registerStudent(Request $request) {
+    public function connectStudent (Request $request) {
+        session(['name'=>$request->name , 'id'=>$request->id]);
+        return view('match' , ['menu'=>'connecting']);
+    }
+
+    public function registerStudent() {
 
         $game = RunningGame::find(1) ;
 
         if ( $game->user_1_ready == 0 ) {
 
             $game->user_1_ready = 1 ;
-            $game->user_1_name = $request->name ;
+            $game->user_1_name = session()->get('name') ;
             $game->save() ;
 
-            session(['name'=>$request->name , 'id'=>$request->id]);
+            session(['player_number'=>'1']);
 
             $this->selectQuestionsForNextRound() ;
 
-            return view('match' , ['menu'=>'waiting']) ;
+            return '1' ;
 
         } else if ( $game->user_2_ready == 0 ) {
 
             $game->user_2_ready = 1 ;
-            $game->user_2_name = $request->name ;
+            $game->user_2_name = session()->get('name') ;
             $game->save() ;
 
-            session(['name'=>$request->name , 'id'=>$request->id]);
+            session(['player_number'=>'2']);
 
             event(new Player2Ready("Player2Ready") ) ;
-//            return 'event is sent' ;
-            return view('match' , ['menu'=>'ready']);
+
+            return '2';
 
         } else {
             //todo:didn't test this yet
@@ -64,9 +76,10 @@ class MatchController extends Controller
         $questions = array () ;
 
         foreach($selectedQuestions as $selectedQuestion){
-            array_push( $questions ,  Question::find($selectedQuestion->id) ) ;
+            array_push( $questions ,  Question::find($selectedQuestion->question_id) ) ;
         }
-        return $questions ;
+
+        return view('selectedQuestions' , ['selectedQuestions'=>$questions ]) ;
     }
 
 
@@ -94,5 +107,68 @@ class MatchController extends Controller
         return $selectedQuestions ;
 
     }
+
+    public function studentReadyToStart() {
+        $game = RunningGame::find(1) ;
+
+        if ( session()->get('player_number') == 1 ) {
+            $game->user_1_ready = 11 ;
+            $game->save() ;
+        }
+        else if ( session()->get('player_number') == 2) {
+            $game->user_2_ready = 22 ;
+            $game->save() ;
+        }
+
+        if ( $game->user_2_ready == 22 && $game->user_1_ready == 11 ) {
+            event(new PlayersAreReadyToStart($game) ) ;
+        }
+
+    }
+
+    // one of the most important methods
+    public function playerAnswer ( $questionId , $answer) {
+        $question = Question::find($questionId) ;
+        $game = RunningGame::find(1) ;
+
+        if ( $answer == $question->answer ) {
+            if (session()->get('player_number') == 1 ) {
+                $game->user_1_answer = 1  ;
+                $game->user_1_points = $game->user_1_points + 10 ; // adding the points
+                $game->save() ;
+                event(new GameEvent($game));
+            } else {
+                $game->user_2_answer = 1  ;
+                $game->user_2_points = $game->user_2_points + 10 ; // adding the points
+                $game->save() ;
+                event(new GameEvent($game));
+            }
+            echo 'current';
+        } else {
+            if (session()->get('player_number') == 1 ) {
+                $game->user_1_answer = 2  ;
+                $game->user_1_points = $game->user_1_points - 5 ; // adding the points
+                $game->save() ;
+                event(new GameEvent($game));
+            } else {
+                $game->user_2_answer = 2  ;
+                $game->user_2_points = $game->user_2_points - 5 ; // adding the points
+                $game->save() ;
+                event(new GameEvent($game));
+            }
+            echo 'wrong' ;
+        }
+
+        if ( $game->user_1_answer != 0 && $game->user_2_answer != 0 ) {
+            $game->user_1_answer = 0 ;
+            $game->user_2_answer = 0 ;
+            $game->save() ;
+            event(new NextQuesiton()) ; // todo : where i stopped
+        }
+
+        return ;
+    }
+
+
 
 }

@@ -10,19 +10,19 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TestEvent implements ShouldBroadcast
+class PlayersAreReadyToStart implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message  ;
+    public $game ;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct( $game )
     {
-        $this->message = $message ;
+        $this->game = $game ;
     }
 
     /**
@@ -30,14 +30,14 @@ class TestEvent implements ShouldBroadcast
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-
     public function broadcastOn()
     {
         return new Channel('game');
     }
 
-    public function broadcastAs()
-    {
-        return 'testEvent';
+    public function broadcastAs(){
+        return 'PlayersAreReadyToStart' ;
     }
+
+
 }

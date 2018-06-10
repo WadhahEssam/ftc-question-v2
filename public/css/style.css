@@ -55,6 +55,12 @@ div {
     height:200px ;
 }
 
+#connecting-menu {
+    background-color: rgba(205, 45, 45, 0.6);
+    height:200px ;
+}
+
+
 #ready-menu {
     background-color: rgba(205, 45, 45, 0.6);
     height:200px ;
@@ -253,7 +259,7 @@ td, th {
     margin: 0 auto ;
 }
 
-#current-question-table {
+.current-question-table {
     margin:  auto ;
     margin-top: -4px;
 }
@@ -304,11 +310,13 @@ td, th {
 }
 
 #option-data-table-1 {
+    width: 50%;
     border-right: 1px solid #9c4a4a75;
     border-bottom: 1px solid #9c4a4a75;
 }
 
 #option-data-table-2 {
+    width: 50%;
     border-bottom: 1px solid #9c4a4a75;
 }
 
@@ -492,7 +500,7 @@ th {
 }
 
 #questions-container {
-    background-color: rgba(255, 27, 27, 0.27);
+    /*background-color: rgba(255, 27, 27, 0.27);*/
     border-radius:10px ;
     padding:10px 0px ;
 }
@@ -522,4 +530,19 @@ th {
         width: 100px;
     }
 
+}
+
+.option {
+    padding:10px ;
+    margin:-10px ;
+}
+
+.current-option {
+    background:red ;
+    padding:10px ;
+    margin:-10px ;
+}
+
+.user_state {
+    padding-top: 7px;
 }

@@ -60,7 +60,9 @@ Route::get('/results' , 'ResultsController@getResults') ;
 |--------------------------------------------------------------------------
 */
 
-Route::post('/registerStudent' , 'MatchController@registerStudent') ;
+Route::post('/connectStudent' , 'MatchController@connectStudent') ;
+
+Route::get('/registerStudent' , 'MatchController@registerStudent') ;
 
 //todo: this should be deleted
 Route::get('/resetMatch' , 'MatchController@resetMatch') ;
@@ -68,4 +70,9 @@ Route::get('/resetMatch' , 'MatchController@resetMatch') ;
 Route::get('/selectQuestions' , 'MatchController@selectQuestionsForNextRound') ;
 
 Route::get('/selectedQuestions' , 'MatchController@getSelectedQuestions') ;
+
+Route::get('/studentReadyToStart' , 'MatchController@studentReadyToStart') ;
+
+Route::get('/playerAnswer/{questionId}/{answer}' , 'MatchController@playerAnswer') ;
+
 

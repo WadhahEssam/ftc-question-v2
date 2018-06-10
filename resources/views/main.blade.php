@@ -39,7 +39,7 @@
         <div id="student-login-home-button" class="home-button"><img width=30 src="images/home.png"></div>
 
         <h1>التسجيل </h1>
-        {!! Form::open(['action'=>'MatchController@registerStudent' , 'method' => 'post' , 'id'=>'register-student-form' , 'style'=>'margin:5px 0px;' , 'onsubmit'=>'return submitForm()' ]) !!}
+        {!! Form::open(['action'=>'MatchController@connectStudent' , 'method' => 'post' , 'id'=>'register-student-form' , 'style'=>'margin:5px 0px;' , 'onsubmit'=>'return submitForm()' ]) !!}
             {!!  Form::token() !!}
             <label style="margin-left:5px">اسم الطالب / الطالبة</label><input type="text" name="name"/><br>
             <label style="margin-left:36px;position:relative;right:20px;">الرقم الجامعي</label><input type="number" size=6 name="id"/>

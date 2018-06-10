@@ -14,6 +14,7 @@
     {{--todo : the shortcut icon must be changed--}}
     <link rel="shortcut icon"  href="images/chlogo.png">
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
     @yield('head')
 </head>
 
