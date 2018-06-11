@@ -7,6 +7,7 @@ use App\Events\NextQuesiton;
 use App\Events\Player2Ready;
 use App\Events\PlayersAreReadyToStart ;
 use App\Question;
+use App\Result;
 use App\SelectedQuestion;
 use Illuminate\Http\Request;
 use App\RunningGame ;
@@ -45,6 +46,7 @@ class MatchController extends Controller
 
             $game->user_1_ready = 1 ;
             $game->user_1_name = session()->get('name') ;
+            $game->user_1_id = session()->get('id') ;
             $game->save() ;
 
             session(['player_number'=>'1']);
@@ -57,6 +59,7 @@ class MatchController extends Controller
 
             $game->user_2_ready = 2 ;
             $game->user_2_name = session()->get('name') ;
+            $game->user_2_id = session()->get('id') ;
             $game->save() ;
 
             session(['player_number'=>'2']);
@@ -94,13 +97,13 @@ class MatchController extends Controller
             array_push($questionsId , $question->id ) ;
         }
 
-        $selectedQuestionsId = array_random($questionsId , 15) ;
+        $selectedQuestionsId = array_random($questionsId , 10) ;
 
         shuffle($selectedQuestionsId) ;
 
         $selectedQuestions = SelectedQuestion::all() ;
 
-        for ( $i = 0 ; $i < 15 ; $i++ ) {
+        for ( $i = 0 ; $i < 10 ; $i++ ) {
             $selectedQuestions[$i]->question_id = $selectedQuestionsId[$i] ;
             $selectedQuestions[$i]->save() ;
         }
@@ -134,6 +137,9 @@ class MatchController extends Controller
         $question = Question::find($questionId) ;
         $game = RunningGame::find(1) ;
 
+
+
+
         // the time finished for the player
         // todo: i should make sure that when the timer finishes and both players already answered that i don't count that as a loss
         if ( $questionId == 0 ) {
@@ -163,7 +169,7 @@ class MatchController extends Controller
                     $game->save() ;
                     event(new GameEvent($game));
                 }
-                echo 'current';
+                $answer = 'correct';
             } else {
                 if (session()->get('player_number') == 1 ) {
                     $game->user_1_answer = 2  ;
@@ -176,7 +182,7 @@ class MatchController extends Controller
                     $game->save() ;
                     event(new GameEvent($game));
                 }
-                echo 'wrong' ;
+                $answer = 'wrong' ;
             }
 
         }
@@ -186,12 +192,45 @@ class MatchController extends Controller
             $game->user_2_answer = 0 ;
             $game->question_id = $game->question_id + 1 ;
             $game->save() ;
-            event(new NextQuesiton($game->question_id)) ; // todo : where i stopped
+            event(new NextQuesiton($game->question_id)) ;
         }
 
+        return $answer ;
+    }
 
 
-        return ;
+    public function challengeFinished () {
+        $result = new Result ;
+        $game = RunningGame::find(1) ;
+
+        $result->first_student_name = $game->user_1_name ;
+        $result->first_student_id = $game->user_1_id ;
+        $result->first_student_points = $game->user_1_points ;
+
+        $result->second_student_name = $game->user_2_name ;
+        $result->second_student_id = $game->user_2_id ;
+        $result->second_student_points = $game->user_2_points ;
+
+        if ( $result->first_student_points > $result->secnod_student_points) {
+            $result->winner = 1 ;
+        } else if ( $result->first_student_points < $result->second_student_points ) {
+            $result->winner = 2 ;
+        } else {
+            $result->winner = 3 ;
+        }
+
+        $result->save()  ;
+
+        $this->resetMatch() ;
+
+        if ( $result->winner = 1 ) {
+            return $result->first_student_name ;
+        } else if ($result->winner = 2 ) {
+            return $result->second_student_name;
+        } else {
+            return '3' ;
+        }
+
     }
 
 

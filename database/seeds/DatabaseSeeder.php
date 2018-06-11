@@ -6,7 +6,7 @@ class DatabaseSeeder extends Seeder
 {
     public $numberOfQuestions = 50 ;
     public $numberOfResults = 20 ;
-    public $numberOfSelectedQuestions = 15 ;
+    public $numberOfSelectedQuestions = 10 ;
     /**
      * Seed the application's database.
      *
@@ -48,7 +48,9 @@ class DatabaseSeeder extends Seeder
             'user_2_points' => '0' ,
             'user_1_answer' => '0' ,
             'user_2_answer' => '0' ,
-            'question_id' => '0' ,
+            'user_1_id' => ' ' ,
+            'user_2_id' => ' ' ,
+            'question_id' => '1' ,
         ]);
 
         for ( $i = 0 ; $i < $this->numberOfSelectedQuestions ; $i++)

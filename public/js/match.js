@@ -23,7 +23,8 @@ $(document).ready(function(){
 });
 
 
-var playerSelectedAnswer = 0;
+let playerSelectedAnswer = 0;
+let stopCounter = 0 ;
 
 // one of the most important methods
 function optionPressed( questionId , option ) {
@@ -31,6 +32,7 @@ function optionPressed( questionId , option ) {
     if ( playerSelectedAnswer == 0 ) {
 
         playerSelectedAnswer = 1 ;
+        stopCounter = 1 ;
 
         if ( option == 5 ) {
             $.get( "playerAnswer/"+questionId+"/"+option );
@@ -38,7 +40,7 @@ function optionPressed( questionId , option ) {
             $('#option-'+questionId+'-'+option).html("<img src='images\\waiting.gif' height='30' >");
 
             $.get( "playerAnswer/"+questionId+"/"+option , function( data ) {
-                if (data == "current") {
+                if (data == "correct") {
                     $('#option-'+questionId+'-'+option).html("<img src='images\\true.png' height='30' >");
                 } else if ( data == "wrong" ) {
                     $('#option-'+questionId+'-'+option).html("<img src='images\\false.png' height='30' >");

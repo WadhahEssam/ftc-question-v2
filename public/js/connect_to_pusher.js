@@ -30,8 +30,10 @@ channel.bind('PlayersAreReadyToStart', function(data) {
     $("#user_2_name").html(data.game.user_2_name ) ;
 
     window.setInterval(function(){
-        $("#timer-clock").html( $("#timer-clock").html() - 1 );
-
+        // if it is allow to move the counter
+        if( stopCounter == 0 ) {
+            $("#timer-clock").html( $("#timer-clock").html() - 1 );
+        }
 
         if ( $("#timer-clock").html() <= 0 ) {
             $("#timer-clock").html(0) ;
@@ -72,12 +74,12 @@ channel.bind('pusher:subscription_succeeded', function(data) {
                 }) ;
             });
         } else if ( user == 2 ) {
-            console.log('you are the user number two') ;
-            $('#connecting-menu').fadeOut('slow' , function () {
+            console.log('you are the user number two');
+            $('#connecting-menu').fadeOut('slow', function () {
                 $("#ready-menu").fadeIn("slow");
-                $('#questions-container').load('/selectedQuestions' , function () {
+                $('#questions-container').load('/selectedQuestions', function () {
                     $.get("/studentReadyToStart");
-                }) ;
+                });
             });
         }
     } );
@@ -85,14 +87,38 @@ channel.bind('pusher:subscription_succeeded', function(data) {
 
 
 
+
+
 channel.bind('NextQuestion', function(data) {
+
+    if ( data.question_id  == 11 ) {
+        $.get('/challengeFinished');
+    }
+    // i should sleep for one second and half so the players can see what the other choosed
     var question_id = parseInt ( data.question_id ) ;
-    // console.log('The question id is : '  +data.question_id + ' and the question_id -1 is ' + ( question_id - 1 ) );
-    $('#question-container-' + ( question_id - 1 ) ).fadeOut('fast' , function() {
-        $('#question-container-' + ( question_id ) ).fadeIn('fast' , function () {
+
+    // don't change the next line from its place
+    playerSelectedAnswer = 0;
+
+    // sleep(2000);
+
+    $('#question-container-' + ( question_id - 1 ) ).delay( 1000 ).slideUp('fast' , function() {
+        $('#question-container-' + ( question_id ) ).slideDown('fast' , function () {
             $("#timer-clock").html(15) ;
+            if( data.question_id != 11 ) {
+                stopCounter = 0 ; // continue counting
+            }
         }) ;
+
+        $('#user_1_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
+        $('#user_2_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
         // so player can choose from the new question
-        playerSelectedAnswer = 0;
     });
 });
+
+
+function sleep(miliseconds) {
+    var currentTime = new Date().getTime();
+    while (currentTime + miliseconds >= new Date().getTime()) {
+    }
+}

@@ -75,4 +75,5 @@ Route::get('/studentReadyToStart' , 'MatchController@studentReadyToStart') ;
 
 Route::get('/playerAnswer/{questionId}/{answer}' , 'MatchController@playerAnswer') ;
 
+Route::get('/challengeFinished' , 'MatchController@challengeFinished') ;
 

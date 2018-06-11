@@ -23,6 +23,8 @@ class CreateRunningGamesTable extends Migration
             $table->integer('user_2_points') ;
             $table->tinyInteger('user_1_answer') ;
             $table->tinyInteger('user_2_answer') ;
+            $table->string('user_1_id') ;
+            $table->string('user_2_id') ;
             $table->integer('question_id') ;
             $table->timestamps();
         });
