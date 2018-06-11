@@ -15,9 +15,6 @@ channel.bind('testEvent', function(data) {
 channel.bind('Player_2_Ready', function(data) {
     $("#waiting-menu").fadeOut("slow" , function () {
         $("#ready-menu").fadeIn("slow");
-        $('#questions-container').load('/selectedQuestions' , function () {
-            $.get("/studentReadyToStart");
-        }) ;
     });
 });
 
@@ -36,10 +33,11 @@ channel.bind('PlayersAreReadyToStart', function(data) {
         $("#timer-clock").html( $("#timer-clock").html() - 1 );
 
 
-        if ( $("#timer-clock").html() == 0 ) {
-            console.log('timer is now zero') ;
+        if ( $("#timer-clock").html() <= 0 ) {
+            $("#timer-clock").html(0) ;
+            optionPressed(0 , 5) ;
         }
-    }, 2000);
+    }, 1000);
 
 });
 
@@ -62,13 +60,18 @@ channel.bind('playerAnswer', function(data) {
 });
 
 channel.bind('pusher:subscription_succeeded', function(data) {
-    $.get( "/registerStudent", function(data) {
-        if ( data == 1 ) {
+    console.log("data : " + data )  ;
+    $.get( "/registerStudent", function(user) {
+        console.log("user : " + user) ;
+        if ( user == 1 ) {
             console.log('you are the user number one') ;
             $('#connecting-menu').fadeOut('slow' , function () {
                 $("#waiting-menu").fadeIn("slow");
+                $('#questions-container').load('/selectedQuestions' , function () {
+                    $.get("/studentReadyToStart");
+                }) ;
             });
-        } else if ( data == 2 ) {
+        } else if ( user == 2 ) {
             console.log('you are the user number two') ;
             $('#connecting-menu').fadeOut('slow' , function () {
                 $("#ready-menu").fadeIn("slow");
@@ -82,3 +85,14 @@ channel.bind('pusher:subscription_succeeded', function(data) {
 
 
 
+channel.bind('NextQuestion', function(data) {
+    var question_id = parseInt ( data.question_id ) ;
+    // console.log('The question id is : '  +data.question_id + ' and the question_id -1 is ' + ( question_id - 1 ) );
+    $('#question-container-' + ( question_id - 1 ) ).fadeOut('fast' , function() {
+        $('#question-container-' + ( question_id ) ).fadeIn('fast' , function () {
+            $("#timer-clock").html(15) ;
+        }) ;
+        // so player can choose from the new question
+        playerSelectedAnswer = 0;
+    });
+});

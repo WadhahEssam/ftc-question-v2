@@ -20,19 +20,10 @@ $(document).ready(function(){
 
     }
 
-    $('.option' ).click(function(){
-        console.log('hi');
-    })
-
-
-    $('#ready-menu' ).click(function(){
-        console.log('hi');
-    })
-
 });
 
-var playerSelectedAnswer = 0;
 
+var playerSelectedAnswer = 0;
 
 // one of the most important methods
 function optionPressed( questionId , option ) {
@@ -41,20 +32,22 @@ function optionPressed( questionId , option ) {
 
         playerSelectedAnswer = 1 ;
 
-        $('#option-'+questionId+'-'+option).html("<img src='images\\waiting.gif' height='30' >");
+        if ( option == 5 ) {
+            $.get( "playerAnswer/"+questionId+"/"+option );
+        } else {
+            $('#option-'+questionId+'-'+option).html("<img src='images\\waiting.gif' height='30' >");
 
-        console.log('hi') ;
+            $.get( "playerAnswer/"+questionId+"/"+option , function( data ) {
+                if (data == "current") {
+                    $('#option-'+questionId+'-'+option).html("<img src='images\\true.png' height='30' >");
+                } else if ( data == "wrong" ) {
+                    $('#option-'+questionId+'-'+option).html("<img src='images\\false.png' height='30' >");
+                }
+            });
+        }
 
-        $.get( "playerAnswer/"+questionId+"/"+option , function( data ) {
-            if (data == "current") {
-                $('#option-'+questionId+'-'+option).html("<img src='images\\true.png' height='30' >");
-            } else if ( data == "wrong" ) {
-                $('#option-'+questionId+'-'+option).html("<img src='images\\false.png' height='30' >");
-            }
-        });
 
     }
-
 
 }
 

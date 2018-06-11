@@ -26,6 +26,7 @@ class MatchController extends Controller
         $game->user_2_points = 0 ;
         $game->user_1_answer = 0 ;
         $game->user_2_answer = 0 ;
+        $game->question_id = 1 ;
         $game->save() ;
 
         return 'the match has been reset ' ;
@@ -54,7 +55,7 @@ class MatchController extends Controller
 
         } else if ( $game->user_2_ready == 0 ) {
 
-            $game->user_2_ready = 1 ;
+            $game->user_2_ready = 2 ;
             $game->user_2_name = session()->get('name') ;
             $game->save() ;
 
@@ -128,23 +129,14 @@ class MatchController extends Controller
 
     // one of the most important methods
     public function playerAnswer ( $questionId , $answer) {
+
+        // the main variables that will be used in the method
         $question = Question::find($questionId) ;
         $game = RunningGame::find(1) ;
 
-        if ( $answer == $question->answer ) {
-            if (session()->get('player_number') == 1 ) {
-                $game->user_1_answer = 1  ;
-                $game->user_1_points = $game->user_1_points + 10 ; // adding the points
-                $game->save() ;
-                event(new GameEvent($game));
-            } else {
-                $game->user_2_answer = 1  ;
-                $game->user_2_points = $game->user_2_points + 10 ; // adding the points
-                $game->save() ;
-                event(new GameEvent($game));
-            }
-            echo 'current';
-        } else {
+        // the time finished for the player
+        // todo: i should make sure that when the timer finishes and both players already answered that i don't count that as a loss
+        if ( $questionId == 0 ) {
             if (session()->get('player_number') == 1 ) {
                 $game->user_1_answer = 2  ;
                 $game->user_1_points = $game->user_1_points - 5 ; // adding the points
@@ -156,15 +148,48 @@ class MatchController extends Controller
                 $game->save() ;
                 event(new GameEvent($game));
             }
-            echo 'wrong' ;
+        } else {
+
+
+            if ( $answer == $question->answer ) {
+                if (session()->get('player_number') == 1 ) {
+                    $game->user_1_answer = 1  ;
+                    $game->user_1_points = $game->user_1_points + 10 ; // adding the points
+                    $game->save() ;
+                    event(new GameEvent($game));
+                } else {
+                    $game->user_2_answer = 1  ;
+                    $game->user_2_points = $game->user_2_points + 10 ; // adding the points
+                    $game->save() ;
+                    event(new GameEvent($game));
+                }
+                echo 'current';
+            } else {
+                if (session()->get('player_number') == 1 ) {
+                    $game->user_1_answer = 2  ;
+                    $game->user_1_points = $game->user_1_points - 5 ; // adding the points
+                    $game->save() ;
+                    event(new GameEvent($game));
+                } else {
+                    $game->user_2_answer = 2  ;
+                    $game->user_2_points = $game->user_2_points - 5 ; // adding the points
+                    $game->save() ;
+                    event(new GameEvent($game));
+                }
+                echo 'wrong' ;
+            }
+
         }
 
         if ( $game->user_1_answer != 0 && $game->user_2_answer != 0 ) {
             $game->user_1_answer = 0 ;
             $game->user_2_answer = 0 ;
+            $game->question_id = $game->question_id + 1 ;
             $game->save() ;
-            event(new NextQuesiton()) ; // todo : where i stopped
+            event(new NextQuesiton($game->question_id)) ; // todo : where i stopped
         }
+
+
 
         return ;
     }

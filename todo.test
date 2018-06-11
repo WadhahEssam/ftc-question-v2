@@ -1,0 +1,10 @@
+1 ) todo : i have to show the waiting image when i change from qusetion to question
+2 ) todo : i can try anther animation of the transition between questions
+3 ) todo : i should save the result in the results table
+
+
+
+issues :
+1 ) todo : in the ( show questions ) > when i delete a question it deletes only the last question
+2 ) todo : in teh ( show questions ) again  > when i refresh the page it looks like it is appending and not replacing > i should make sure it does this behaviour
+3 ) todo : when a third person enters while two students are already playing he should be redirected into the main menu with a message saying we don't offer this right now
