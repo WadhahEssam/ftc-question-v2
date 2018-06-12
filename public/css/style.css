@@ -15,7 +15,7 @@
 
 body {
     /*todo : change the background pattern to a cool one*/
-    background-image:url('http://ftc-question-v2.com/images/pattern.png');
+    background-image:url('http://127.0.0.1:8000/images/pattern.png');
     background-color:white;
     text-align:center;
     color:white;
@@ -282,14 +282,14 @@ td, th {
 
 .running-match-stats-table-data {
     padding: 0px 36px;
-    background: rgba(91,179,93,1);
-    background: -moz-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(91,179,93,1)), color-stop(100%, rgba(143,219,68,0.72)));
-    background: -webkit-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
-    background: -o-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
-    background: -ms-linear-gradient(-45deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
-    background: linear-gradient(135deg, rgba(91,179,93,1) 0%, rgba(143,219,68,0.72) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5bb35d', endColorstr='#8fdb44', GradientType=1 );
+    background: rgba(212,228,239,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,0.69)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
+    background: radial-gradient(ellipse at center, rgba(212, 228, 239, 0.56)  0%, rgba(134,174,204,0.69) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
     border-radius: 15px;
     width: 40%;
 }
@@ -330,14 +330,21 @@ td, th {
 }
 
 #points {
-    background: #4798628c;
+    background:#5947988c ;
     border-radius: 10px;
     margin-top: 5px;
 }
 
 #timer {
     border-radius: 59%;
-    background: #d0a8a8;
+    background: rgba(210,255,82,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(210,255,82,1)), color-stop(100%, rgba(145,232,66,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+    background:     radial-gradient(at center center, rgb(144, 180, 46) 0%, rgb(255, 193, 193) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1 );
     padding: 15px;
     width: 76px;
     height: 69px;
@@ -545,4 +552,16 @@ th {
 
 .user_state {
     padding-top: 7px;
+}
+
+.current-user {
+    color: rgb(125, 103, 150);
+}
+
+.winner-name {
+    color:rgba(145,232,66,1);
+}
+
+.loser-name {
+    color:#ff00006e;
 }

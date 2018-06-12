@@ -1,18 +1,30 @@
 1 )  i have to show the waiting image when i change from question to question
 2 )  i can try anther animation of the transition between questions
 3 )  i should save the result in the results table
-4 ) todo : i should provide a way to let them know which one is which while they are playing
-
+4 )  i should provide a way to let them know which one is which while they are playing
+5 ) todo : add a functionality to the logout button in the match menu
+6 ) todo : i should create a new event in the challenge finished method in match controller to let the user know who won the game and get rid of some pictures
+7 ) todo : i should add a button when that shows up when the game finishes to give the option to players to leave to the register menu
+8 ) todo : include the time in which the player has answered the question in the calculations of the potions
+9 ) todo : include the difficulty of a question in the calculation of the potions
 
 
 issues :
 1 ) todo : in the ( show questions ) > when i delete a question it deletes only the last question
-2 ) todo : in the ( show questions ) again  > when i refresh the page it looks like it is appending and not replacing > i should make sure it does this behaviour
+2 ) in the ( show questions ) again  > when i refresh the page it looks like it is appending and not replacing > i should make sure it does this behaviour
 3 ) todo : when a third person enters while two students are already playing he should be redirected into the main menu with a message saying we don't offer this right now
-4 ) todo : fix the color of the green true icon that sometimes it is hard to see
+4 ) fix the color of the green true icon that sometimes it is hard to see
 5 ) todo : from the database i should get only the first name if the user has put his full name
 6 ) when the second player chooses his option no state image appears to him
 7 ) make it only ten questions .
 8 ) force the timer to stop when the player answers the question
 9 ) force the timer to stop and disappear when the game finishes
-10 ) todo : make the questions counter slideup and slidedown when you move from a question to anther .
+10 ) make the questions counter slideup and slidedown when you move from a question to anther .
+11 ) there is a new result added after the main result is recorded ( with the names null and null ) so there is a problem that should be solved
+13 ) when i let both of the players forfeit , a skip of two questions happens and i still don't know why it happens
+14 ) the questions counter doesn't work > so make it work
+15 ) don't show the timer panel at the end of the game
+16 ) i should let the questions counter counts after the new questions is shown not before
+15 ) when you answer for the second time in the last moment it will count your answer
+17 ) todo : seems like the results are not calculated as it suppose to be ( when both players are equal or when both are negative )
+18 ) the timer should disappear after you choose an answer ( try it > might be bad )

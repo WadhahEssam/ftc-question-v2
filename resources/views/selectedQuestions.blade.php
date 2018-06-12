@@ -1,7 +1,7 @@
 
 <div id="timer">
     <h1 id="timer-clock" style="padding-bottom:4px">15</h1>
-    <h3 style="margin-top: -11px;">السؤال 1</h3>
+    <h3 id="questions-counter" style="margin-top: -11px;">السؤال 1</h3>
 </div>
 
 @foreach($selectedQuestions as $selectedQuestion )
@@ -33,5 +33,5 @@
     <br>
     <br>
     <h3>انتهت الاسئلة , شكرا لاشتراكك</h3>
-    <h1>الفائز هو وضاح </h1>
+    <h1 id="winner">الفائز هو وضاح </h1>
 </div>

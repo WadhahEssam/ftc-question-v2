@@ -25,9 +25,14 @@ $(document).ready(function(){
 
 let playerSelectedAnswer = 0;
 let stopCounter = 0 ;
+let questions_counter = 1 ;
+let timesToForfeit = 0 ;
+let playerNumber = 0 ; // it will be determined by the connecting event
 
 // one of the most important methods
 function optionPressed( questionId , option ) {
+
+    console.log('optionPressed()') ;
 
     if ( playerSelectedAnswer == 0 ) {
 
@@ -47,7 +52,6 @@ function optionPressed( questionId , option ) {
                 }
             });
         }
-
 
     }
 

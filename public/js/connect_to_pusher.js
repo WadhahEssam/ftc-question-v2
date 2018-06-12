@@ -24,7 +24,11 @@ channel.bind('PlayersAreReadyToStart', function(data) {
         $("#match-menu").fadeIn("slow");
     });
 
-    console.log(data.game.user_2_name) ;
+    if ( playerNumber == 1 ) {
+        $('#user_1_name').addClass('current-user');
+    } else if ( playerNumber == 2 ) {
+        $('#user_2_name').addClass('current-user');
+    }
 
     $("#user_1_name").html(data.game.user_1_name ) ;
     $("#user_2_name").html(data.game.user_2_name ) ;
@@ -37,13 +41,19 @@ channel.bind('PlayersAreReadyToStart', function(data) {
 
         if ( $("#timer-clock").html() <= 0 ) {
             $("#timer-clock").html(0) ;
-            optionPressed(0 , 5) ;
+            console.log('timesToForfeit = ' + timesToForfeit ) ;
+            if ( timesToForfeit == 0 ) {
+                optionPressed(0 , 5) ;
+                timesToForfeit = 1  ;
+            }
         }
     }, 1000);
 
 });
 
 channel.bind('playerAnswer', function(data) {
+    console.log('playerAnswerEvent') ;
+
     $('#user_1_points').html(data.game.user_1_points) ;
     $('#user_2_points').html(data.game.user_2_points) ;
 
@@ -73,6 +83,7 @@ channel.bind('pusher:subscription_succeeded', function(data) {
                     $.get("/studentReadyToStart");
                 }) ;
             });
+            playerNumber = 1 ;
         } else if ( user == 2 ) {
             console.log('you are the user number two');
             $('#connecting-menu').fadeOut('slow', function () {
@@ -81,6 +92,7 @@ channel.bind('pusher:subscription_succeeded', function(data) {
                     $.get("/studentReadyToStart");
                 });
             });
+            playerNumber = 2;
         }
     } );
 });
@@ -90,35 +102,72 @@ channel.bind('pusher:subscription_succeeded', function(data) {
 
 
 channel.bind('NextQuestion', function(data) {
+    console.log('nextQuestionEvent') ;
 
     if ( data.question_id  == 11 ) {
         $.get('/challengeFinished');
     }
-    // i should sleep for one second and half so the players can see what the other choosed
+
     var question_id = parseInt ( data.question_id ) ;
 
     // don't change the next line from its place
-    playerSelectedAnswer = 0;
 
-    // sleep(2000);
+
+    // to raise the counter of the questions by one
 
     $('#question-container-' + ( question_id - 1 ) ).delay( 1000 ).slideUp('fast' , function() {
+        // don't change the next line from its place
+        playerSelectedAnswer = 0;
         $('#question-container-' + ( question_id ) ).slideDown('fast' , function () {
-            $("#timer-clock").html(15) ;
-            if( data.question_id != 11 ) {
-                stopCounter = 0 ; // continue counting
-            }
+
+
         }) ;
 
-        $('#user_1_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
-        $('#user_2_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
-        // so player can choose from the new question
+        $("#timer-clock").html(15) ;
+        timesToForfeit =  0 ;
+        if( data.question_id != 11 ) {
+            stopCounter = 0 ; // continue counting
+        }
+
+        $('#questions-counter').html('السؤال ' + ++questions_counter);
+
+        if (data.question_id != 11 ) {
+            $('#user_1_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
+            $('#user_2_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
+            // so player can choose from the new question
+        }
+
     });
+
+    $('#timer').delay( 1000 ).slideUp('fast' , function () {
+        if( data.question_id != 11 ) {
+            $('#timer').slideDown('fast') ;
+        }
+    });
+
+
 });
 
 
-function sleep(miliseconds) {
-    var currentTime = new Date().getTime();
-    while (currentTime + miliseconds >= new Date().getTime()) {
+
+channel.bind('GameFinished', function(data) {
+    if ( parseInt(data.game.user_1_points) > parseInt(data.game.user_2_points) ) {
+        $('#winner').html('الفائز هو ' + data.game.user_1_name ) ;
+        $('#user_1_name').addClass('winner-name');
+        $('#user_2_name').addClass('loser-name');
+        $('#user_1_state').html("<img class='user_state' src='images\\gold-medal.png' height='20' >");
+        $('#user_2_state').html("<img class='user_state' src='images\\skull.png' height='20' >");
+
+    } else if ( parseInt(data.game.user_1_points) < parseInt(data.game.user_2_points) ) {
+        $('#winner').html('الفائز هو <br>' + data.game.user_2_name ) ;
+        $('#user_2_name').addClass('winner-name');
+        $('#user_1_name').addClass('loser-name');
+        $('#user_2_state').html("<img class='user_state' src='images\\gold-medal.png' height='20' >");
+        $('#user_1_state').html("<img class='user_state' src='images\\skull.png' height='20' >");
+
+
+    } else {
+        $('#winner').html('النتيجة هي تعادل') ;
     }
-}
+});
+

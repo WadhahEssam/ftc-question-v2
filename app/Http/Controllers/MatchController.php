@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\GameEvent;
+use App\Events\GameFinished;
 use App\Events\NextQuesiton;
 use App\Events\Player2Ready;
 use App\Events\PlayersAreReadyToStart ;
@@ -138,8 +139,6 @@ class MatchController extends Controller
         $game = RunningGame::find(1) ;
 
 
-
-
         // the time finished for the player
         // todo: i should make sure that when the timer finishes and both players already answered that i don't count that as a loss
         if ( $questionId == 0 ) {
@@ -203,33 +202,46 @@ class MatchController extends Controller
         $result = new Result ;
         $game = RunningGame::find(1) ;
 
-        $result->first_student_name = $game->user_1_name ;
-        $result->first_student_id = $game->user_1_id ;
-        $result->first_student_points = $game->user_1_points ;
+        if ($game->user_1_name != 'null' ) {
 
-        $result->second_student_name = $game->user_2_name ;
-        $result->second_student_id = $game->user_2_id ;
-        $result->second_student_points = $game->user_2_points ;
+            $result->first_student_name = $game->user_1_name ;
+            $result->first_student_id = $game->user_1_id ;
+            $result->first_student_points = $game->user_1_points ;
 
-        if ( $result->first_student_points > $result->secnod_student_points) {
-            $result->winner = 1 ;
-        } else if ( $result->first_student_points < $result->second_student_points ) {
-            $result->winner = 2 ;
-        } else {
-            $result->winner = 3 ;
+            $result->second_student_name = $game->user_2_name ;
+            $result->second_student_id = $game->user_2_id ;
+            $result->second_student_points = $game->user_2_points ;
+
+            if ( intval($result->first_student_points) > intval($result->secnod_student_points)) {
+                $result->winner = 1 ;
+            } else if ( intval($result->first_student_points) < intval($result->secnod_student_points) ) {
+                $result->winner = 2 ;
+            } else {
+                $result->winner = 3 ;
+            }
+
+            $result->save()  ;
+
+            // this should be fired before resetting the match
+            event(new GameFinished($game)) ;
+
+            $this->resetMatch() ;
+
+//            return 'user 1 points : ' . $result->first_student_points  . ' | user 2 points ' . $result->second_student_points  ;
+            return 'is 1points > 2points : ' . ( intval($result->first_student_points) > intval($result->secnod_student_points) )  . ' is -50 > 100 ' . ( -50 > 100 )  ;
+
+        }
+        else {
+
         }
 
-        $result->save()  ;
-
-        $this->resetMatch() ;
-
-        if ( $result->winner = 1 ) {
-            return $result->first_student_name ;
-        } else if ($result->winner = 2 ) {
-            return $result->second_student_name;
-        } else {
-            return '3' ;
-        }
+//        if ( $result->winner = 1 ) {
+//            return $result->first_student_name ;
+//        } else if ($result->winner = 2 ) {
+//            return $result->second_student_name;
+//        } else {
+//            return '3' ;
+//        }
 
     }
 
