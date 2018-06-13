@@ -33,7 +33,7 @@ class Controller extends BaseController
             return redirect('/admin') ;
         } else {
             $message="كلمة المرور خاطئة" ;
-            return view('main' )->with('message' , $message);
+            return view('main', ['message'=>$message , 'menu'=>'main'] ) ;
         }
     }
 
@@ -75,6 +75,10 @@ class Controller extends BaseController
             $message = "المشرفون فقط من يمكنهم رؤية هذه الصفحة" ;
             return view('admin' , ['message'=>$message]) ;
         }
+    }
+
+    public function goToNewChallenge () {
+        return view('main' , ['menu'=>'student-login']) ;
     }
 
 }

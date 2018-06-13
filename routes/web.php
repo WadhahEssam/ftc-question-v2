@@ -17,7 +17,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
-    return view('main');
+    return view('main' , ['menu'=>'main']);
 });
 
 Route::post('/loginAdmin' , 'Controller@loginAdmin') ;
@@ -30,6 +30,8 @@ Route::post('/loginAdmin' , 'Controller@loginAdmin') ;
 Route::get('/admin' , 'Controller@showAdminPage' )->name('admin') ;
 
 Route::post('/changeAdminPassword' , 'Controller@changeAdminPassword') ;
+
+Route::get('/goToNewChallenge' , 'Controller@goToNewChallenge') ;
 
 
 /*

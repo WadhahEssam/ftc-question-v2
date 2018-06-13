@@ -2,22 +2,12 @@
 
 $(document).ready(function(){
 
-    // if(  $("#match-menu").is(":visible") != true &&  $("#waiting-menu").is(":visible") != true  )
-    // {
-    //     console.log('hello');
-    //     $("#waiting-menu").fadeIn("slow");
-    // }
-
     if ( document.getElementById("menu").innerHTML == "connecting") {
         $("#connecting-menu").fadeIn("slow");
     }
 
     if ( document.getElementById("menu").innerHTML == "waiting") {
         $("#waiting-menu").fadeIn("slow");
-    }
-
-    if ( document.getElementById("menu").innerHTML == "ready" ) {
-
     }
 
 });
@@ -42,7 +32,7 @@ function optionPressed( questionId , option ) {
         if ( option == 5 ) {
             $.get( "playerAnswer/"+questionId+"/"+option );
         } else {
-            $('#option-'+questionId+'-'+option).html("<img src='images\\waiting.gif' height='30' >");
+            $('#option-'+questionId+'-'+option).html("<img src='images\\waiting3.gif' height='35' >");
 
             $.get( "playerAnswer/"+questionId+"/"+option , function( data ) {
                 if (data == "correct") {
@@ -56,7 +46,6 @@ function optionPressed( questionId , option ) {
     }
 
 }
-
 
 
 

@@ -152,7 +152,7 @@ channel.bind('NextQuestion', function(data) {
 
 channel.bind('GameFinished', function(data) {
     if ( parseInt(data.game.user_1_points) > parseInt(data.game.user_2_points) ) {
-        $('#winner').html('الفائز هو ' + data.game.user_1_name ) ;
+        $('#winner').html('الفائز هو <br>' + data.game.user_1_name ) ;
         $('#user_1_name').addClass('winner-name');
         $('#user_2_name').addClass('loser-name');
         $('#user_1_state').html("<img class='user_state' src='images\\gold-medal.png' height='20' >");

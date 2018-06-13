@@ -3,17 +3,23 @@
 $(document).ready(function(){
 
     // starting the website
-
-    if(  $("#login-menu").is(":visible") != true &&  $("#admin-login-menu").is(":visible") != true  && $("#student-login-menu").is(":visible") != true )
-    {
-        $("#login-menu").slideDown("slow" , function () {
+    if ( document.getElementById("menu").innerHTML == "student-login") {
+        $("#student-login-menu").fadeIn("slow");
+    } else {
+        if(  $("#login-menu").is(":visible") != true &&  $("#admin-login-menu").is(":visible") != true  && $("#student-login-menu").is(":visible") != true )
+        {
+            $("#login-menu").slideDown("slow" , function () {
+                $("#student-button").animate( { opacity : 1  } , 500 ) ;
+                $("#admin-button").animate( { opacity : 1  } , 500 ) ;
+            });
+        } else {
             $("#student-button").animate( { opacity : 1  } , 500 ) ;
             $("#admin-button").animate( { opacity : 1  } , 500 ) ;
-        });
-    } else {
-        $("#student-button").animate( { opacity : 1  } , 500 ) ;
-        $("#admin-button").animate( { opacity : 1  } , 500 ) ;
+        }
     }
+
+
+
 
     // pressing one of the options
 

@@ -7,6 +7,12 @@
 
 @section('body')
 
+    @if(isset($menu))
+        {{--used to determine which menu i should open to the user--}}
+        <p id="menu" style="display:none">{{$menu}}</p>
+    @endif
+
+
     {{-----------------------------------------------------------------------------------------------}}
 
     <div class="container" id="login-menu" style="display:none">
@@ -46,6 +52,8 @@
             <br>
             <input type="submit" value="ابدأ"/>
         {!! Form::close() !!}
+
+
     </div>
 
     {{------------------------------------------------------------------------------------------------}}

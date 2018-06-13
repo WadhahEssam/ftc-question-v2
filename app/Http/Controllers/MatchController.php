@@ -232,13 +232,6 @@ class MatchController extends Controller
 
         }
 
-//        if ( $result->winner = 1 ) {
-//            return $result->first_student_name ;
-//        } else if ($result->winner = 2 ) {
-//            return $result->second_student_name;
-//        } else {
-//            return '3' ;
-//        }
 
     }
 
