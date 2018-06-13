@@ -87,7 +87,6 @@ class MatchController extends Controller
         return view('selectedQuestions' , ['selectedQuestions'=>$questions ]) ;
     }
 
-
     private function selectQuestionsForNextRound () {
 
         $questions = Question::select('id')->get() ;
@@ -197,7 +196,6 @@ class MatchController extends Controller
         return $answer ;
     }
 
-
     public function challengeFinished () {
         $result = new Result ;
         $game = RunningGame::find(1) ;
@@ -227,7 +225,6 @@ class MatchController extends Controller
 
             $this->resetMatch() ;
 
-//            return 'user 1 points : ' . $result->first_student_points  . ' | user 2 points ' . $result->second_student_points  ;
             return 'is 1points > 2points : ' . ( intval($result->first_student_points) > intval($result->secnod_student_points) )  . ' is -50 > 100 ' . ( -50 > 100 )  ;
 
         }
@@ -244,7 +241,5 @@ class MatchController extends Controller
 //        }
 
     }
-
-
 
 }

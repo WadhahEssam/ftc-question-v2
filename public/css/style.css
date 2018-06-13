@@ -512,7 +512,7 @@ th {
     padding:10px 0px ;
 }
 
-#delete-button {
+.delete-button {
     background: #e43d3dbf;
     min-width: 60px;
 }

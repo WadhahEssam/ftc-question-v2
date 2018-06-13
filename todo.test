@@ -2,7 +2,7 @@
 2 )  i can try anther animation of the transition between questions
 3 )  i should save the result in the results table
 4 )  i should provide a way to let them know which one is which while they are playing
-5 ) todo : add a functionality to the logout button in the match menu
+5 ) todo : add a functionality to the logout button in the match menu ( this will require me to add a new event to inform the other player that the first one has left the game and that ihe is the winner now ) 
 6 ) todo : i should create a new event in the challenge finished method in match controller to let the user know who won the game and get rid of some pictures
 7 ) todo : i should add a button when that shows up when the game finishes to give the option to players to leave to the register menu
 8 ) todo : include the time in which the player has answered the question in the calculations of the potions
