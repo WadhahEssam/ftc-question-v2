@@ -1,4 +1,4 @@
-@extends('layouts\app')
+@extends('layouts.app')
 
 @section('head')
     {{--todo : the place of this file should be changed because now when it is here a connection is established every time i open the main page --}}
