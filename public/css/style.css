@@ -479,17 +479,12 @@ th {
 /*todo: fix the message's width on mobile */
 #message {
     height: 30px;
-    width: 30%;
-    min-width:230px ;
+    width: 50%;
+    min-width: 230px;
     border-radius: 10px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
     background-color: rgb(98, 64, 137);
     padding: 10px 4px 4px 4px;
-    position: absolute;
-    bottom: 12px;
-    left: 34%;
+    margin: 10px auto;
 }
 
 .role {

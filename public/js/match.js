@@ -45,6 +45,14 @@ function optionPressed( questionId , option ) {
 
     }
 
+
+    $('#forfeit-button').click(function () {
+        pusher.disconnect() ;
+        $('#match-menu').fadeOut('fast' , function () {
+            window.location.href='/forfeit';
+        }) ;
+    }) ;
+
 }
 
 

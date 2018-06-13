@@ -171,3 +171,8 @@ channel.bind('GameFinished', function(data) {
     }
 });
 
+channel.bind('PlayerForfeit', function(data) {
+    $('#match-menu').fadeOut('fast' , function () {
+        window.location.href='/forfeit';
+    }) ;
+});

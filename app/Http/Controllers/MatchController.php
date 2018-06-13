@@ -6,6 +6,7 @@ use App\Events\GameEvent;
 use App\Events\GameFinished;
 use App\Events\NextQuesiton;
 use App\Events\Player2Ready;
+use App\Events\PlayerForfeit;
 use App\Events\PlayersAreReadyToStart ;
 use App\Question;
 use App\Result;
@@ -232,7 +233,35 @@ class MatchController extends Controller
 
         }
 
+    }
+
+    public function forfeit () {
+
+        $game = RunningGame::find(1) ;
+
+        if ( $game->user_1_ready == '111' ) {
+            $game->user_2_ready = '222' ;
+
+            $this->resetMatch() ;
+
+            $message = "خصمك انسحب من التحدي" ;
+            return view('main', ['message'=>$message , 'menu'=>'main'] ) ;
+        } else  {
+            $game->user_1_ready = '111' ;
+            $game->save() ;
+
+            event ( new PlayerForfeit() ) ;
+
+            $message = "تم الانسحاب من التحدي" ;
+
+            return view('main', ['message'=>$message , 'menu'=>'main'] ) ;
+        }
+
+
+
+
 
     }
+
 
 }

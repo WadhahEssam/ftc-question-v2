@@ -10,6 +10,8 @@
 
     {{--so they can be loaded faster--}}
     <img style="display:none" src='images\waiting3.gif' height='35' >
+    <img style="display:none" src='images\true.png' height='35' >
+    <img style="display:none" src='images\false.png' height='35' >
 
     {{--used to determine which menu i should open to the user--}}
     <p id="menu" style="display:none">{{$menu}}</p>

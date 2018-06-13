@@ -79,3 +79,5 @@ Route::get('/playerAnswer/{questionId}/{answer}' , 'MatchController@playerAnswer
 
 Route::get('/challengeFinished' , 'MatchController@challengeFinished') ;
 
+Route::get('/forfeit' , 'MatchController@forfeit') ;
+
