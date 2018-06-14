@@ -42,7 +42,7 @@
 
                         {!! Form::open(['method'=>'delete' , 'url'=>'/deleteQuestion' , 'style'=>'margin:10px 0px;']) !!}
                             <input type="hidden" name="id" value="{{$question->id}}" >
-                            <input class="delete-button" type="submit" value="حذف" >
+                            <input style="background-color:rgba(200,74,58,0.72)" class="delete-button" type="submit" value="حذف" >
                         {!! Form::close() !!}
                     </td>
                 </tr>

@@ -17,9 +17,8 @@ class Controller extends BaseController
 
     //todo: remember to delete this
     public function test () {
-        $message = 'وضاح عصام' ;
-        return strtok($message , ' ') ;
-        event(new TestEvent( $message ));
+//        return getimagesize('images/true.png') . " ";
+//        event(new TestEvent( $message ));
     }
 
     public function notAllowed ( ) {
