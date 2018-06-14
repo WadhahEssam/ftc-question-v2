@@ -35,17 +35,38 @@ class MatchController extends Controller
         return 'the match has been reset ' ;
     }
 
+
     public function connectStudent (Request $request) {
-        session(['name'=>$request->name , 'id'=>$request->id]);
-        return view('match' , ['menu'=>'connecting']);
+
+        if ( isset($request->name) && isset($request->id) ){
+
+            if ( strlen($request->id) == 9 ) {
+                $results = Result::all() ;
+
+                foreach ( $results as $result ) {
+                    if (  ( $result->first_student_id == $request->id ) || ( $result->second_student_id == $request->id ) ) {
+                        return view('main' , ['message'=>'لا يمكن المشاركة لأكثر من مرة' , 'menu'=>'student-login']) ;
+                    }
+                }
+
+                session(['name'=>$request->name , 'id'=>$request->id]);
+                return view('match' , ['menu'=>'connecting']);
+            } else {
+                return view('main' , ['message'=>'خطأ في الرقم الجامعي' , 'menu'=>'student-login']) ;
+            }
+
+        } else {
+            return view('main' , ['message'=>'ادخل جميع الحقول' , 'menu'=>'student-login']) ;
+        }
+
     }
 
     public function registerStudent() {
 
         $game = RunningGame::find(1) ;
 
-        if ( $game->user_1_ready == 0 ) {
-
+        if ( $game->user_1_ready == 0 || $game->user_1_ready == 111 ) {
+            $this->resetMatch() ;
             $game->user_1_ready = 1 ;
             $game->user_1_name = session()->get('name') ;
             $game->user_1_id = session()->get('id') ;
@@ -72,7 +93,7 @@ class MatchController extends Controller
 
         } else {
             //todo:didn't test this yet
-            return view('/main' , ['message'=>'معليش غير مصمم لأكثر من مباراة']);
+            return '3' ;
         }
 
     }
@@ -126,30 +147,48 @@ class MatchController extends Controller
         }
 
         if ( $game->user_2_ready == 22 && $game->user_1_ready == 11 ) {
-            event(new PlayersAreReadyToStart($game) ) ;
+            // giving only the first name of the players
+            $user1Name = strtok($game->user_1_name , " ");
+            $user2Name = strtok($game->user_2_name , " ");
+
+            event(new PlayersAreReadyToStart($game , $user1Name , $user2Name ) ) ;
+
         }
 
     }
 
     // one of the most important methods
-    public function playerAnswer ( $questionId , $answer) {
+    public function playerAnswer ( $questionId , $answer , $timerClock) {
 
         // the main variables that will be used in the method
         $question = Question::find($questionId) ;
         $game = RunningGame::find(1) ;
+        $timerClock = intval($timerClock) ;
 
+        ///////////////// Calculating the points ////////////////////////////
+        // the maximum points that you can get from a question is 25
+        $questionPoints = 10 ;
+        $timerFactor = intval ($timerClock * ( 5 / 15 ) ) ;
+        if ( isset($question) ) {
+            $difficultyFactor = $question->dif * 3 ;
+        } else {
+            $difficultyFactor = 0 ;
+        }
+
+
+        $totalPoints = $questionPoints + $timerFactor + $difficultyFactor ;
+
+        //////////////////////////////////////////////////////////////////////
 
         // the time finished for the player
         // todo: i should make sure that when the timer finishes and both players already answered that i don't count that as a loss
         if ( $questionId == 0 ) {
             if (session()->get('player_number') == 1 ) {
                 $game->user_1_answer = 2  ;
-                $game->user_1_points = $game->user_1_points - 5 ; // adding the points
                 $game->save() ;
                 event(new GameEvent($game));
             } else {
                 $game->user_2_answer = 2  ;
-                $game->user_2_points = $game->user_2_points - 5 ; // adding the points
                 $game->save() ;
                 event(new GameEvent($game));
             }
@@ -159,12 +198,12 @@ class MatchController extends Controller
             if ( $answer == $question->answer ) {
                 if (session()->get('player_number') == 1 ) {
                     $game->user_1_answer = 1  ;
-                    $game->user_1_points = $game->user_1_points + 10 ; // adding the points
+                    $game->user_1_points = $game->user_1_points + $totalPoints  ; // adding the points
                     $game->save() ;
                     event(new GameEvent($game));
                 } else {
                     $game->user_2_answer = 1  ;
-                    $game->user_2_points = $game->user_2_points + 10 ; // adding the points
+                    $game->user_2_points = $game->user_2_points + $totalPoints; // adding the points
                     $game->save() ;
                     event(new GameEvent($game));
                 }
@@ -172,12 +211,10 @@ class MatchController extends Controller
             } else {
                 if (session()->get('player_number') == 1 ) {
                     $game->user_1_answer = 2  ;
-                    $game->user_1_points = $game->user_1_points - 5 ; // adding the points
                     $game->save() ;
                     event(new GameEvent($game));
                 } else {
                     $game->user_2_answer = 2  ;
-                    $game->user_2_points = $game->user_2_points - 5 ; // adding the points
                     $game->save() ;
                     event(new GameEvent($game));
                 }

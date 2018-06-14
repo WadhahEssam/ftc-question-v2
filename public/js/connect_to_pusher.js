@@ -30,8 +30,8 @@ channel.bind('PlayersAreReadyToStart', function(data) {
         $('#user_2_name').addClass('current-user');
     }
 
-    $("#user_1_name").html(data.game.user_1_name ) ;
-    $("#user_2_name").html(data.game.user_2_name ) ;
+    $("#user_1_name").html(data.user1Name ) ;
+    $("#user_2_name").html(data.user2Name ) ;
 
     window.setInterval(function(){
         // if it is allow to move the counter
@@ -72,7 +72,7 @@ channel.bind('playerAnswer', function(data) {
 });
 
 channel.bind('pusher:subscription_succeeded', function(data) {
-    console.log("data : " + data )  ;
+
     $.get( "/registerStudent", function(user) {
         console.log("user : " + user) ;
         if ( user == 1 ) {
@@ -93,7 +93,10 @@ channel.bind('pusher:subscription_succeeded', function(data) {
                 });
             });
             playerNumber = 2;
+        } else if ( user == 3 ) {
+            window.location.href='/notAllowed';
         }
+
     } );
 });
 

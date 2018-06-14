@@ -38,7 +38,7 @@
     <div  dir="rtl" class="container" id="student-login-menu" style="display:none" >
         <h1> شروط المسابقة :</h1>
         <h3>1 - أدخل بياناتك بشكل صحيح</h3>
-        <h3>2 - حاول الاجابة على اكبر قدر ممكن من الاسئلة للفوز على خصمك</h3>
+        <h3>2 - لديك عشرة اسئلة لتجيب عنها </h3>
         <h3>3 - يحق لك المشاركة لمرة واحدة فقط</h3>
         <br>
 
@@ -47,8 +47,8 @@
         <h1>التسجيل </h1>
         {!! Form::open(['action'=>'MatchController@connectStudent' , 'method' => 'post' , 'id'=>'register-student-form' , 'style'=>'margin:5px 0px;' , 'onsubmit'=>'return submitForm()' ]) !!}
             {!!  Form::token() !!}
-            <label style="margin-left:5px">اسم الطالب / الطالبة</label><input type="text" name="name"/><br>
-            <label style="margin-left:36px;position:relative;right:20px;">الرقم الجامعي</label><input type="number" size=6 name="id"/>
+            <label style="margin-left:5px">اسم الطالب / الطالبة</label><input type="text" name="name" placeholder="مثال : نواف القحطاني"/><br>
+            <label style="margin-left:36px;position:relative;right:20px;">الرقم الجامعي</label><input type="text" size=6 name="id" placeholder="مثال : 435108270"/>
             <br>
             <input type="submit" value="ابدأ"/>
         {!! Form::close() !!}

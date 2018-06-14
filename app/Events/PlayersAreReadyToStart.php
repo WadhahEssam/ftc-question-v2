@@ -14,15 +14,17 @@ class PlayersAreReadyToStart implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $game ;
+    public $game , $user1Name , $user2Name ;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct( $game )
+    public function __construct( $game , $user1Name , $user2Name )
     {
         $this->game = $game ;
+        $this->user1Name = $user1Name ;
+        $this->user2Name = $user2Name ;
     }
 
     /**

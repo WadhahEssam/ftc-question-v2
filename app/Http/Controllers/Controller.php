@@ -17,8 +17,13 @@ class Controller extends BaseController
 
     //todo: remember to delete this
     public function test () {
-        $message = 'what the hell is going on' ;
+        $message = 'وضاح عصام' ;
+        return strtok($message , ' ') ;
         event(new TestEvent( $message ));
+    }
+
+    public function notAllowed ( ) {
+        return view('main' , ['message'=>'غير مسموح دخول اكثر من لاعبين' , 'menu'=>'main']) ;
     }
 
     public function loginAdmin ( Request $request ) {

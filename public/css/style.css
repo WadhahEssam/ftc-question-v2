@@ -153,6 +153,13 @@ div {
     overflow-y:scroll ;
 }
 
+#results-container {
+    background-color: #eee4cf7a;
+    border-radius: 20px;
+    padding: 20px 0px;
+    margin: 10px -15px;
+}
+
 #results-menu::-webkit-scrollbar-track
 {
     border-radius: 10px;
@@ -535,7 +542,7 @@ th {
 }
 
 .option {
-    padding:10px ;
+    padding: 10px 20%;
     margin:-10px ;
 }
 

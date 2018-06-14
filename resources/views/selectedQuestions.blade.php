@@ -33,10 +33,8 @@
     <br>
     <br>
     <h3>انتهت الاسئلة , شكرا لاشتراكك</h3>
-    <h1 id="winner" style="margin-bottom: 20px;">الفائز هو وضاح </h1>
+    <h1 id="winner" style="margin-bottom: 20px;">الفائز هو </h1>
 
 
     <a href="/goToNewChallenge" style="text-decoration:none"><div id="newChallengeButton"><h2>تحدي جديد</h2></div></a>
-
-
 </div>

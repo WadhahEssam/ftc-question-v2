@@ -20,12 +20,10 @@ Route::get('/', function () {
     return view('main' , ['menu'=>'main']);
 });
 
-Route::post('/loginAdmin' , 'Controller@loginAdmin') ;
+// when a third person is trying to enter the game while it is lunching
+Route::get('/notAllowed' ,'Controller@notAllowed') ;
 
-// todo : this should be removed after production
-//Route::get('/testAdmin' , function(){
-//    return view('admin') ;
-//});
+Route::post('/loginAdmin' , 'Controller@loginAdmin') ;
 
 Route::get('/admin' , 'Controller@showAdminPage' )->name('admin') ;
 
@@ -75,7 +73,7 @@ Route::get('/selectedQuestions' , 'MatchController@getSelectedQuestions') ;
 
 Route::get('/studentReadyToStart' , 'MatchController@studentReadyToStart') ;
 
-Route::get('/playerAnswer/{questionId}/{answer}' , 'MatchController@playerAnswer') ;
+Route::get('/playerAnswer/{questionId}/{answer}/{timer}' , 'MatchController@playerAnswer') ;
 
 Route::get('/challengeFinished' , 'MatchController@challengeFinished') ;
 

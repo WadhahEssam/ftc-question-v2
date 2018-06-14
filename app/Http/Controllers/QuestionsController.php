@@ -47,9 +47,7 @@ class QuestionsController extends Controller
     //todo : i have to delete the image in the file if there is an image
     public function deleteQuestion (Request $request) {
         if ( session()->has('admin') ) {
-            $question = Question::find($request->id);
-
-            $question->delete() ;
+            $question = Question::destroy($request->id);
 
             $message = "تم حذف السؤال" ;
             $menu = "show_questions" ;

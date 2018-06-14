@@ -30,11 +30,11 @@ function optionPressed( questionId , option ) {
         stopCounter = 1 ;
 
         if ( option == 5 ) {
-            $.get( "playerAnswer/"+questionId+"/"+option );
+            $.get( "playerAnswer/"+questionId+"/"+option+"/"+$('#timer-clock').html() );
         } else {
             $('#option-'+questionId+'-'+option).html("<img src='images\\waiting3.gif' height='35' >");
 
-            $.get( "playerAnswer/"+questionId+"/"+option , function( data ) {
+            $.get( "playerAnswer/"+questionId+"/"+option+"/"+$('#timer-clock').html() , function( data ) {
                 if (data == "correct") {
                     $('#option-'+questionId+'-'+option).html("<img src='images\\true.png' height='30' >");
                 } else if ( data == "wrong" ) {
