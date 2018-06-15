@@ -30,7 +30,7 @@ class QuestionsController extends Controller
         $question->option4 = $request->option4 ;
         $question->answer  = $request->answer  ;
         $question->dif     = $request->dif     ;
-        $question->imagePath = "path" ;
+        $question->imagePath = "" ;
 
 
         // resizing the image
