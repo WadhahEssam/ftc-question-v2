@@ -288,28 +288,28 @@ td, th {
 }
 
 .running-match-stats-table-data {
+    background: rgba(228,192,255,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(228,192,255,1) 0%, rgba(86,90,171,0.6) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(228,192,255,1)), color-stop(100%, rgba(86,90,171,0.6)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(228,192,255,1) 0%, rgba(86,90,171,0.6) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(228,192,255,1) 0%, rgba(86,90,171,0.6) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(228,192,255,1) 0%, rgba(86,90,171,0.6) 100%);
+    background: radial-gradient(ellipse at center, rgba(228,192,255,1) 0%, rgba(86,90,171,0.6) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4c0ff', endColorstr='#565aab', GradientType=1 );
     padding: 0px 36px;
-    background: rgba(212,228,239,1);
-    background: -moz-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,0.69)));
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
-    background: -o-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
-    background: -ms-radial-gradient(center, ellipse cover, rgba(212,228,239,1) 0%, rgba(134,174,204,0.69) 100%);
-    background: radial-gradient(ellipse at center, rgba(212, 228, 239, 0.56)  0%, rgba(134,174,204,0.69) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
     border-radius: 15px;
     width: 40%;
 }
 
 #question-table-data {
-    background: #9c4a4aa6;
+    background: #8d1f095c;
     padding: 20px;
     border-radius: 10px 10px 0px 0px;
 }
 
 .option-table-data {
     padding:10px;
-    background: #f4a92ba6;
+    background: #f4e02b6e;
 }
 
 .option-table-data:hover {
@@ -534,7 +534,6 @@ th {
 
     .running-match-stats-table-data {
         padding:10px 30px ;
-        background: #69da69de;
         border-radius: 15px;
         width: 100px;
     }
@@ -557,8 +556,9 @@ th {
 }
 
 .current-user {
-    color: rgb(125, 103, 150);
+    color: rgba(255, 255, 255, 0.66);
 }
+
 
 .winner-name {
     color:rgba(145,232,66,1);

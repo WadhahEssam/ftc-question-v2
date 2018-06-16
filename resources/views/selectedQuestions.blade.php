@@ -11,8 +11,8 @@
         <table class="current-question-table" id="question-{{$loop->index+1}}" >
             <tr>
                 <td colspan="4" id="question-table-data">
-                    <h2 style="padding-bottom:13px">{{$selectedQuestion->question}} and the answer is {{$selectedQuestion->answer}}</h2>
-                    @if($selectedQuestion->imagePath != "" )  <img height="80" id="question-image" src="images\questionImageTest.jpg" > @endif
+                    <h2 style="padding-bottom:13px">{{$selectedQuestion->question}} </h2>
+                    @if($selectedQuestion->imagePath != "" )  <img height="80" id="question-image" src="images\{{$selectedQuestion->imagePath}}" > @endif
                 </td>
             </tr>
             <tr>

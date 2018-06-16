@@ -29,6 +29,10 @@ function optionPressed( questionId , option ) {
         playerSelectedAnswer = 1 ;
         stopCounter = 1 ;
 
+        // stopping the animation
+        $('#timer-clock').removeClass('animated infinite pulse ');
+        $('#timer').removeClass('animated infinite pulse') ;
+
         if ( option == 5 ) {
             $.get( "playerAnswer/"+questionId+"/"+option+"/"+$('#timer-clock').html() );
         } else {

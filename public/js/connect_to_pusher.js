@@ -37,7 +37,11 @@ channel.bind('PlayersAreReadyToStart', function(data) {
         // if it is allow to move the counter
         if( stopCounter == 0 ) {
             $("#timer-clock").html( $("#timer-clock").html() - 1 );
+            $('#timer-clock').delay(500).addClass('animated infinite pulse ');
+            $('#timer').delay(500).addClass('animated infinite pulse') ;
+
         }
+
 
         if ( $("#timer-clock").html() <= 0 ) {
             $("#timer-clock").html(0) ;
@@ -54,17 +58,20 @@ channel.bind('PlayersAreReadyToStart', function(data) {
 channel.bind('playerAnswer', function(data) {
     console.log('playerAnswerEvent') ;
 
-    $('#user_1_points').html(data.game.user_1_points) ;
-    $('#user_2_points').html(data.game.user_2_points) ;
+
+    $('#user_1_points').delay(200).html(data.game.user_1_points) ;
+    $('#user_2_points').delay(200).html(data.game.user_2_points) ;
 
     if(data.game.user_1_answer == 1 ) {
         $('#user_1_state').html("<img class='user_state' src='images\\true.png' height='20' >");
+        $('#user_1_points').animateCss('swing');
     } else if (data.game.user_1_answer == 2 )  {
         $('#user_1_state').html("<img class='user_state' src='images\\false.png' height='20' >");
     }
 
     if(data.game.user_2_answer == 1 ) {
         $('#user_2_state').html("<img class='user_state' src='images\\true.png' height='20' >");
+        $('#user_2_points').animateCss('swing');
     } else if (data.game.user_2_answer == 2 ) {
         $('#user_2_state').html("<img class='user_state' src='images\\false.png' height='20' >");
     }

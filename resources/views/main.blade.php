@@ -19,8 +19,8 @@
 
         <table id='role-table'>
             <tr>
-                <td><div class="main-button" id="admin-button" ><h1 class="role">مشرف</h1></div></td>
-                <td><div class="main-button" id="student-button" ><h1 class="role">طالب</h1></div></td>
+                <td><div class="main-button " id="admin-button" ><h1 class="role">مشرف</h1></div></td>
+                <td><div class="main-button " id="student-button" ><h1 class="role">طالب</h1></div></td>
             </tr>
         </table>
 
