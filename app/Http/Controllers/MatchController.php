@@ -32,6 +32,8 @@ class MatchController extends Controller
         $game->question_id = 1 ;
         $game->save() ;
 
+
+
         return 'the match has been reset ' ;
     }
 
@@ -135,6 +137,10 @@ class MatchController extends Controller
     }
 
     public function studentReadyToStart() {
+
+        // solve for the two result entries
+        Config::set('gameFinished', '0');
+
         $game = RunningGame::find(1) ;
 
         if ( session()->get('player_number') == 1 ) {
@@ -238,7 +244,9 @@ class MatchController extends Controller
         $result = new Result ;
         $game = RunningGame::find(1) ;
 
-        if ($game->user_1_name != 'null' ) {
+        if (Config::get('gameFinished' == '0')) {
+
+            Config::set('gameFinished', '1');
 
             $result->first_student_name = $game->user_1_name ;
             $result->first_student_id = $game->user_1_id ;
@@ -263,7 +271,6 @@ class MatchController extends Controller
 
             $this->resetMatch() ;
 
-            return 'is 1points > 2points : ' . ( intval($result->first_student_points) > intval($result->secnod_student_points) )  . ' is -50 > 100 ' . ( -50 > 100 )  ;
 
         }
         else {
