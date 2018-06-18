@@ -63,7 +63,12 @@
         </div>
 
         <div dir="rtl" id="best-result-container">
-            <h2>افضل نتيجة</h2>
+            <h2>
+            <img style="margin: 1px 1px -4px 4px;" id="star-image" src="images/star.gif" height="20">
+            افضل نتيجة
+            <img style="margin: 1px 4px -4px 1px;" id="star-image" src="images/star.gif" height="20">
+            </h2>
+
             <h3 id="best-result" >عبدالعزيز</h3>
         </div>
 

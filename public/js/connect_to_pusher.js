@@ -187,6 +187,8 @@ channel.bind('GameFinished', function(data) {
     } else {
         $('#winner').html('النتيجة هي تعادل') ;
     }
+
+
 });
 
 channel.bind('PlayerForfeit', function(data) {

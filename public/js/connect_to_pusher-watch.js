@@ -91,6 +91,9 @@ channel.bind('pusher:subscription_succeeded', function(data) {
 
 channel.bind('PlayersAreReadyToStart', function(data) {
 
+
+    $('#ftc-logo').animateCss('bounce');
+
     $('#user_1_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
     $('#user_2_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
 
@@ -174,6 +177,8 @@ channel.bind('playerAnswer', function(data) {
 
 channel.bind('NextQuestion', function(data) {
 
+
+
     if ( data.question_id  == 11 ) {
 
     } else {
@@ -186,6 +191,7 @@ channel.bind('NextQuestion', function(data) {
             $('#user_1_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
             $('#user_2_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
             $('#questions-counter').html("السؤال " + question_id) ;
+            $('#ftc-logo').animateCss('rubberBand');
             if( data.question_id != 11 ) {
                 $('#questions-counter').fadeIn('fast') ;
             }
@@ -220,6 +226,20 @@ channel.bind('GameFinished', function(data) {
     } else {
         $('#questions-counter').html('النتيجة هي تعادل') ;
     }
+
+
+    $('#last-game').animateCss('wobble');
+
+    $('#last-game').load('/lastGameWinner');
+
+    $.get('/getBestStudent' , function(data) {
+        if ($('#best-result').html() == data ) {
+            // do nothing
+        } else {
+            $('#best-result').animateCss('flash');
+            $('#best-result').html(data);
+        }
+    });
 
 });
 
