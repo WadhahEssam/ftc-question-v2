@@ -139,7 +139,7 @@ div {
 
 #watch-game-menu {
     background-color: rgba(205, 45, 45, 0.6);
-    height:500px;
+    height:515px;
 }
 
 #add-question-menu {
@@ -580,4 +580,38 @@ th {
 
 #newChallengeButton:hover {
     background: rgba(42, 73, 77, 0.87);
+}
+
+#watch-match-question-counter {
+    background: rgba(70,163,72,1);
+    background: -moz-linear-gradient(-45deg, rgba(70,163,72,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(70,163,72,1)), color-stop(100%, rgba(143,219,68,0.72)));
+    background: -webkit-linear-gradient(-45deg, rgba(70,163,72,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: -o-linear-gradient(-45deg, rgba(70,163,72,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(70,163,72,1) 0%, rgba(143,219,68,0.72) 100%);
+    background: linear-gradient(135deg, rgba(70,163,72,1) 0%, rgba(143,219,68,0.72) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#46a348', endColorstr='#8fdb44', GradientType=1 );
+    width: 160px;
+    height: 37px;
+    margin: 17px auto 10px auto;
+    border-radius: 15px;
+    padding-top: 9px;
+}
+
+#last-game-result-container {
+    padding: 10px 10px 20px 10px;
+    background: #fffe006e;
+    border-radius: 10px;
+    margin-top: 0px;
+    width: 80%;
+    display: inline-block;
+}
+
+#best-result-container {
+    background: #c13939d1;
+    margin: 10px 0px;
+    padding: 10px 10px 20px 10px;
+    border-radius: 10px;
+    width: 80%;
+    display: inline-block;
 }

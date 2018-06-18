@@ -21,7 +21,7 @@
 
         <br>
         <img height='100' src="images\loading.gif">
-        <h1>جاري التوصيل</h1>
+        <h1>جاري الاتصال</h1>
 
     </div>
 
@@ -54,9 +54,9 @@
         <table id="running-match-stats-table" >
 
             <tr>
-                <td class="running-match-stats-table-data" id="current-user-1"><h2 id="user_1_name">وضاح</h2><div id="points"><h3 id="user_1_points">0</h3></div><div id="user_1_state"><img style="margin-bottom: -5px;padding-top: 2px;" src="images\waiting.gif" height="30" ></div></td>
+                <td class="running-match-stats-table-data" id="current-user-1"><h2 id="user_1_name">اسم اللاعب</h2><div id="points"><h3 id="user_1_points">0</h3></div><div id="user_1_state"><img style="margin-bottom: -5px;padding-top: 2px;" src="images\waiting.gif" height="30" ></div></td>
                 <td><img style="padding:0px 15px" src="images\vs.png" height="45"></td>
-                <td class="running-match-stats-table-data" id="current-user-2"><h2 id="user_2_name">ريان</h2><div id="points"><h3 id="user_2_points">0</h3></div><div id="user_2_state"><img style="margin-bottom: -5px;padding-top: 2px;" src="images\waiting.gif" height="30"> </div></td>
+                <td class="running-match-stats-table-data" id="current-user-2"><h2 id="user_2_name">اسم اللاعب</h2><div id="points"><h3 id="user_2_points">0</h3></div><div id="user_2_state"><img style="margin-bottom: -5px;padding-top: 2px;" src="images\waiting.gif" height="30"> </div></td>
             </tr>
 
         </table>

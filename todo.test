@@ -40,6 +40,12 @@ issues :
 Stuff to be added :
 
 1 ) todo : add the watch the match menu ( hardest thing and might take two days )
-2 ) todo : fix the animation of the match menu ( this should be added first since most of the animations will be moved to the watch the match menu
-3 ) todo : fix the colors and try the best colors
+    a ) todo : record the two students name and points
+    b ) todo : record the question's time and number
+    c ) todo : give a hint on who is answering the questions right and who is answering wrong
+2 ) fix the animation of the match menu ( this should be added first since most of the animations will be moved to the watch the match menu
+3 ) fix the colors and try the best colors
 4 ) todo : fix the width of the options >> making me go crazy
+5 ) todo : fix the result's winner issue since it is not recorded the right way in the database for some reason
+6 ) todo : delete all the console.logs
+7 ) todo : remove the forfeit button when the game finishes

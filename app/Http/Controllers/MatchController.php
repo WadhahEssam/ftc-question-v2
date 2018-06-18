@@ -25,14 +25,14 @@ class MatchController extends Controller
         $game->user_2_ready = 0 ;
         $game->user_1_name = 'null' ;
         $game->user_2_name = 'null' ;
+        $game->user_1_id = ' ' ;
+        $game->user_2_id = ' ' ;
         $game->user_1_points = 0 ;
         $game->user_2_points = 0 ;
         $game->user_1_answer = 0 ;
         $game->user_2_answer = 0 ;
         $game->question_id = 1 ;
         $game->save() ;
-
-
 
         return 'the match has been reset ' ;
     }
@@ -137,10 +137,6 @@ class MatchController extends Controller
     }
 
     public function studentReadyToStart() {
-
-        // solve for the two result entries
-        Config::set('gameFinished', '0');
-
         $game = RunningGame::find(1) ;
 
         if ( session()->get('player_number') == 1 ) {
@@ -244,9 +240,7 @@ class MatchController extends Controller
         $result = new Result ;
         $game = RunningGame::find(1) ;
 
-        if (Config::get('gameFinished' == '0')) {
-
-            Config::set('gameFinished', '1');
+        if ($game->user_1_name != 'null' ) {
 
             $result->first_student_name = $game->user_1_name ;
             $result->first_student_id = $game->user_1_id ;
@@ -256,9 +250,9 @@ class MatchController extends Controller
             $result->second_student_id = $game->user_2_id ;
             $result->second_student_points = $game->user_2_points ;
 
-            if ( intval($result->first_student_points) > intval($result->secnod_student_points)) {
+            if ( intval($game->user_1_points) > intval($game->user_2_points)) {
                 $result->winner = 1 ;
-            } else if ( intval($result->first_student_points) < intval($result->secnod_student_points) ) {
+            } else if ( intval($game->user_1_points) < intval($game->user_2_points) ) {
                 $result->winner = 2 ;
             } else {
                 $result->winner = 3 ;
@@ -271,8 +265,8 @@ class MatchController extends Controller
 
             $this->resetMatch() ;
 
-
         }
+
         else {
 
         }
@@ -300,10 +294,6 @@ class MatchController extends Controller
 
             return view('main', ['message'=>$message , 'menu'=>'main'] ) ;
         }
-
-
-
-
 
     }
 

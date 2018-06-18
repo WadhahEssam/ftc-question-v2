@@ -165,6 +165,10 @@ channel.bind('NextQuestion', function(data) {
 
 
 channel.bind('GameFinished', function(data) {
+
+    // to hide the forfeit button
+    $('#forfeit-button').fadeOut('fast') ;
+
     if ( parseInt(data.game.user_1_points) > parseInt(data.game.user_2_points) ) {
         $('#winner').html('الفائز هو <br>' + data.game.user_1_name ) ;
         $('#user_1_name').addClass('winner-name');

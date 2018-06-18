@@ -13,14 +13,13 @@ $(document).ready(function(){
         $("#admin-menu").fadeIn("slow");
     }
 
-
     // pressing one of the options
 
-    $("#watch-game-button").click(function(){
-        $("#admin-menu").fadeOut("fast" , function () {
-            $("#watch-game-menu").fadeIn("fast");
-            $('#message').fadeOut('fast');
-        });
+    $('#watch-game-button').click( function () {
+        $('#admin-menu').fadeOut('fast' , function () {
+            window.location.href='/watchMatch';
+        }) ;
+        $('#message').fadeOut('fast');
     });
 
     $("#add-questions-button").click(function(){

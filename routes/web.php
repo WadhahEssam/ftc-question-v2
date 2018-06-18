@@ -79,3 +79,16 @@ Route::get('/challengeFinished' , 'MatchController@challengeFinished') ;
 
 Route::get('/forfeit' , 'MatchController@forfeit') ;
 
+/*
+|--------------------------------------------------------------------------
+| Match
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/watchMatch' , 'WatchMatchController@watchMatch') ;
+
+Route::get('/checkMatch' , 'WatchMatchController@checkMatch') ;
+
+Route::get('/lastGameWinner' , 'WatchMatchController@getLastGameWinner') ;
+
+Route::get('/getBestStudent' , 'WatchMatchController@getBestStudent') ;
