@@ -1,6 +1,5 @@
 
-// todo: Enable pusher logging - don't include this in production
-Pusher.logToConsole = true;
+Pusher.logToConsole = false;
 
 var pusher = new Pusher('49a0b1bfdd7b1ae72b2c', {
     cluster: 'eu',
@@ -45,7 +44,6 @@ channel.bind('PlayersAreReadyToStart', function(data) {
 
         if ( $("#timer-clock").html() <= 0 ) {
             $("#timer-clock").html(0) ;
-            console.log('timesToForfeit = ' + timesToForfeit ) ;
             if ( timesToForfeit == 0 ) {
                 optionPressed(0 , 5) ;
                 timesToForfeit = 1  ;
@@ -56,7 +54,6 @@ channel.bind('PlayersAreReadyToStart', function(data) {
 });
 
 channel.bind('playerAnswer', function(data) {
-    console.log('playerAnswerEvent') ;
 
     if ( $('#user_1_points').html() < data.game.user_1_points ) {
         $('#user_1_points').animateCss('swing');
@@ -85,9 +82,7 @@ channel.bind('playerAnswer', function(data) {
 channel.bind('pusher:subscription_succeeded', function(data) {
 
     $.get( "/registerStudent", function(user) {
-        console.log("user : " + user) ;
         if ( user == 1 ) {
-            console.log('you are the user number one') ;
             $('#connecting-menu').fadeOut('slow' , function () {
                 $("#waiting-menu").fadeIn("slow");
                 $('#questions-container').load('/selectedQuestions' , function () {
@@ -96,7 +91,6 @@ channel.bind('pusher:subscription_succeeded', function(data) {
             });
             playerNumber = 1 ;
         } else if ( user == 2 ) {
-            console.log('you are the user number two');
             $('#connecting-menu').fadeOut('slow', function () {
                 $("#ready-menu").fadeIn("slow");
                 $('#questions-container').load('/selectedQuestions', function () {
@@ -116,7 +110,6 @@ channel.bind('pusher:subscription_succeeded', function(data) {
 
 
 channel.bind('NextQuestion', function(data) {
-    console.log('nextQuestionEvent') ;
 
     if ( data.question_id  == 11 ) {
         $.get('/challengeFinished');

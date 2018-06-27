@@ -250,7 +250,7 @@ class MatchController extends Controller
         $result = new Result ;
         $game = RunningGame::find(1) ;
 
-        if ($game->user_1_name != 'null' ) {
+        if ( ! $this->isDublicate($result->first_student_id) ) {
 
             $result->first_student_name = $game->user_1_name ;
             $result->first_student_id = $game->user_1_id ;
@@ -268,12 +268,14 @@ class MatchController extends Controller
                 $result->winner = 3 ;
             }
 
-            $result->save()  ;
+            if ($result->first_student_name != "null" ) {
+                $result->save()  ;
 
-            // this should be fired before resetting the match
-            event(new GameFinished($game)) ;
+                // this should be fired before resetting the match
+                event(new GameFinished($game)) ;
 
-            $this->resetMatch() ;
+                $this->resetMatch() ;
+            }
 
         }
 
@@ -304,6 +306,22 @@ class MatchController extends Controller
 
             return view('main', ['message'=>$message , 'menu'=>'main'] ) ;
         }
+
+    }
+
+    private function isDublicate($first_student_id) {
+        $lastResult = Result::all()->last();
+
+        if ( isset($lastResult) ) {
+            if ( $lastResult->first_student_id == $first_student_id ) {
+                return true ;
+            } else {
+                return false ;
+            }
+        } else {
+            return false ;
+        }
+
 
     }
 

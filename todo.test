@@ -49,6 +49,6 @@ Stuff to be added :
 5 ) fix the result's winner issue since it is not recorded the right way in the database for some reason
 6 ) todo : delete all the console.logs
 7 ) remove the forfeit button when the game finishes
-8 ) todo : in mobile from c9 it looks like the app is using no css ( see this problem )
+8 ) in mobile from c9 it looks like the app is using no css ( see this problem )
 9 ) todo : i should add at least 50 questions from the questions of the last context
-10 ) todo : the result still sometimes it is recorded two times maybe i have to make sure this is not happening even thought it is not a big problem ( meaning that it won't really make any different if i didn't save it the right way )
+10 ) the result still sometimes it is recorded two times maybe i have to make sure this is not happening even thought it is not a big problem ( meaning that it won't really make any different if i didn't save it the right way )

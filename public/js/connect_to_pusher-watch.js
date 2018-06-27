@@ -1,6 +1,5 @@
 
-// todo: Enable pusher logging - don't include this in production
-Pusher.logToConsole = true;
+Pusher.logToConsole = false;
 
 var pusher = new Pusher('49a0b1bfdd7b1ae72b2c', {
     cluster: 'eu',
@@ -21,7 +20,6 @@ channel.bind('pusher:subscription_succeeded', function(data) {
         $('#waiting-menu').fadeIn('slow' , function() {
             $.get( "/checkMatch", function(data) {
 
-                console.log (data.user_1_name + '') ;
 
                 if (data.user_1_name == 'null') {
 
@@ -48,12 +46,11 @@ channel.bind('pusher:subscription_succeeded', function(data) {
                 }
 
                 if (data.user_2_name == 'null') {
-                    console.log ('the name of user 2 is ' + data.user_2_name )
+
                 } else {
 
                     // if this game is the first game to watch
                     if ( gameStarted == 0 ) {
-                        console.log('game started  ' + gameStarted ) ;
                         $('#user_2_name').html(data.user_2_name) ;
                         $('#user_2_points').html(data.user_2_points) ;
                         $('#loading-user-2').fadeOut('slow' , function () {
@@ -61,7 +58,6 @@ channel.bind('pusher:subscription_succeeded', function(data) {
                         });
                         $('#questions-counter').html("السؤال " + data.question_id) ;
                     } else if ( gameStarted == 1 ) {
-                        console.log('game started  ' + gameStarted ) ;
                         $('#user_2_div').fadeOut('slow' , function () {
                             $('#user_2_name').html(data.user_2_name) ;
                             $('#user_2_points').html(data.user_2_points) ;
@@ -115,7 +111,6 @@ channel.bind('PlayersAreReadyToStart', function(data) {
 
     // if this game is the first game to watch
     if ( gameStarted == 0 ) {
-        console.log('game started  ' + gameStarted ) ;
         $("#user_2_name").html(data.user2Name ) ;
         $('#user_2_points').html(data.game.user_2_points) ;
         $('#loading-user-2').fadeOut('slow' , function () {
@@ -123,7 +118,6 @@ channel.bind('PlayersAreReadyToStart', function(data) {
         });
         $('#questions-counter').html("السؤال " + data.game.question_id) ;
     } else if ( gameStarted == 1 ) {
-        console.log('game started  ' + gameStarted ) ;
         $('#user-2-div').fadeOut('slow' , function () {
             $("#user_2_name").html(data.user2Name ) ;
             $('#user_2_points').html(data.game.user_2_points) ;
