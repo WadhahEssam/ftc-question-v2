@@ -59,7 +59,7 @@
 
         <div id="last-game-result-container">
             <h2>نتيجة اخر تحدي</h2>
-            <h3 id="last-game" >فوز عبدالعزيز</h3>
+            <h3 id="last-game" >لا توجد نتائج</h3>
         </div>
 
         <div dir="rtl" id="best-result-container">
@@ -69,7 +69,7 @@
             <img style="margin: 1px 4px -4px 1px;" id="star-image" src="images/star.gif" height="20">
             </h2>
 
-            <h3 id="best-result" >عبدالعزيز</h3>
+            <h3 id="best-result" >لا توجد نتائج</h3>
         </div>
 
     </div>

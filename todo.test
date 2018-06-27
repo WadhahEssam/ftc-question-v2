@@ -46,6 +46,9 @@ Stuff to be added :
 2 ) fix the animation of the match menu ( this should be added first since most of the animations will be moved to the watch the match menu
 3 ) fix the colors and try the best colors
 4 ) todo : fix the width of the options >> making me go crazy
-5 ) todo : fix the result's winner issue since it is not recorded the right way in the database for some reason
+5 ) fix the result's winner issue since it is not recorded the right way in the database for some reason
 6 ) todo : delete all the console.logs
 7 ) remove the forfeit button when the game finishes
+8 ) todo : in mobile from c9 it looks like the app is using no css ( see this problem )
+9 ) todo : i should add at least 50 questions from the questions of the last context
+10 ) todo : the result still sometimes it is recorded two times maybe i have to make sure this is not happening even thought it is not a big problem ( meaning that it won't really make any different if i didn't save it the right way )

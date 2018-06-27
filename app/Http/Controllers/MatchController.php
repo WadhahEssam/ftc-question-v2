@@ -111,6 +111,9 @@ class MatchController extends Controller
         return view('selectedQuestions' , ['selectedQuestions'=>$questions ]) ;
     }
 
+    /**
+     * @return SelectedQuestion[]|\Illuminate\Database\Eloquent\Collection
+     */
     private function selectQuestionsForNextRound () {
 
         $questions = Question::select('id')->get() ;
@@ -160,7 +163,14 @@ class MatchController extends Controller
     }
 
     // one of the most important methods
-    public function playerAnswer ( $questionId , $answer , $timerClock) {
+
+    /**
+     * @param $questionId
+     * @param $answer
+     * @param $timerClock
+     * @return string
+     */
+    public function playerAnswer ($questionId , $answer , $timerClock) {
 
         // the main variables that will be used in the method
         $question = Question::find($questionId) ;
@@ -296,6 +306,5 @@ class MatchController extends Controller
         }
 
     }
-
 
 }

@@ -200,8 +200,6 @@ channel.bind('NextQuestion', function(data) {
 
     }
 
-
-
 });
 
 
