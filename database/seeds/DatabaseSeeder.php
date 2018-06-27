@@ -14,18 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // for the questions database
-//        for ( $i = 0 ; $i < $this->numberOfQuestions ; $i++)
-//            DB::table('questions' )->insert([
-//                'question' =>  "This is a test question number " . ($i+1) ,
-//                'option1' => $this->createOption() ,
-//                'option2' => $this->createOption(),
-//                'option3' => $this->createOption(),
-//                'option4' => $this->createOption(),
-//                'imagePath' => '' ,
-//                'answer' => rand(1,4) ,
-//                'dif' => rand(1,3) ,
-//            ]);
+//         for the questions database
+        for ( $i = 0 ; $i < $this->numberOfQuestions ; $i++)
+            DB::table('questions' )->insert([
+                'question' =>  "This is a test question number " . ($i+1) ,
+                'option1' => $this->createOption() ,
+                'option2' => $this->createOption(),
+                'option3' => $this->createOption(),
+                'option4' => $this->createOption(),
+                'imagePath' => '' ,
+                'answer' => rand(1,4) ,
+                'dif' => rand(1,3) ,
+            ]);
 
         // for the results database
 //        for ( $i = 0 ; $i < $this->numberOfResults ; $i++)
