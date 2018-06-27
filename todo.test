@@ -47,7 +47,7 @@ Stuff to be added :
 3 ) fix the colors and try the best colors
 4 ) todo : fix the width of the options >> making me go crazy
 5 ) fix the result's winner issue since it is not recorded the right way in the database for some reason
-6 ) todo : delete all the console.logs
+6 ) delete all the console.logs
 7 ) remove the forfeit button when the game finishes
 8 ) in mobile from c9 it looks like the app is using no css ( see this problem )
 9 ) todo : i should add at least 50 questions from the questions of the last context
