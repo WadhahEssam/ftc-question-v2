@@ -609,6 +609,7 @@ th {
     margin-top: 0px;
     width: 80%;
     display: inline-block;
+    direction: rtl;
 }
 
 #best-result-container {
