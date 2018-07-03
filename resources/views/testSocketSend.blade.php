@@ -1,9 +1,9 @@
 <?php
 
         use ElephantIO\Client ;
-        use ElephantIO\Engine\SocketIO\Version1X ;
+        use ElephantIO\Engine\SocketIO\Version2X ;
 
-        $version = new Version1X ("http://localhost:3001") ;
+        $version = new Version2X ("http://localhost:3010") ;
 
         $client = new Client ( $version ) ;
 
