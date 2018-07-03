@@ -305,6 +305,7 @@ td, th {
     background: #8d1f095c;
     padding: 20px;
     border-radius: 10px 10px 0px 0px;
+    min-width: 260px;
 }
 
 .option-table-data {
