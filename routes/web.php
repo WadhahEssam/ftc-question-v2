@@ -6,9 +6,16 @@
 |--------------------------------------------------------------------------
 */
 
-//todo : remember to delete this
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+Route::get('testSocket' , function () {
+    return view('testSocket') ;
+});
+
+Route::get('testSocketSend' , function () {
+    return view('testSocketSend') ;
+});
 
 Route::get('test' , 'Controller@test' ) ;
 
