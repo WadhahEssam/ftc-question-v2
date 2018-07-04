@@ -38,7 +38,9 @@
   "homepage": "https://github.com/WadhahEssam/ftc-question-v2#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "laravel-echo": "^1.4.0",
     "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
     "winston": "^3.0.0"
   }
 }

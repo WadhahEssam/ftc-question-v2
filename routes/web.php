@@ -9,9 +9,21 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+// testing stuff
 Route::get('testSocket' , function () {
     return view('testSocket') ;
 });
+
+Route::get('/testRedis' , function () {
+    Redis::pipeline(function ($pipe) {
+        for ($i = 0; $i < 1000; $i++) {
+            $pipe->set("key:$i", $i);
+        }
+    });
+
+    return 'done' ;
+}) ;
 
 Route::get('testSocketSend' , function () {
     return view('testSocketSend') ;

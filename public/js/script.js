@@ -1,6 +1,8 @@
 // script for all the pages
 
+// noinspection JSAnnotator
 $(document).ready(function() {
+
 
     //something related to animate.js
     $.fn.extend({

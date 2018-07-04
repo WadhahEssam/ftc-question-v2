@@ -1,4 +1,15 @@
 
+
+import Echo from "laravel-echo"
+
+window.io = require('socket.io-client');
+
+window.Echo = new Echo({
+    broadcaster: '127.0.0.1',
+    host: window.location.hostname + ':6001'
+});
+
+
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
 
