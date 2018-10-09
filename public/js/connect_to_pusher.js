@@ -111,7 +111,8 @@ channel.bind('pusher:subscription_succeeded', function(data) {
 
 channel.bind('NextQuestion', function(data) {
 
-    if ( data.question_id  == 11 ) {
+    // to change the number of questions change the number 
+    if ( data.question_id  == 21 ) {
         $.get('/challengeFinished');
     }
 
@@ -123,7 +124,7 @@ channel.bind('NextQuestion', function(data) {
     // to raise the counter of the questions by one
 
     $('#question-container-' + ( question_id - 1 ) ).delay( 1000 ).slideUp('fast' , function() {
-        // don't change the next line from its place
+        // don't change the next line from its place otherwise everything will explode
         playerSelectedAnswer = 0;
         $('#question-container-' + ( question_id ) ).slideDown('fast' , function () {
 
@@ -132,13 +133,15 @@ channel.bind('NextQuestion', function(data) {
 
         $("#timer-clock").html(15) ;
         timesToForfeit =  0 ;
-        if( data.question_id != 11 ) {
+        // to change the number of questions change the number 
+        if( data.question_id != 21 ) {
             stopCounter = 0 ; // continue counting
         }
 
         $('#questions-counter').html('السؤال ' + ++questions_counter);
 
-        if (data.question_id != 11 ) {
+        // to change the number of questions change the number 
+        if (data.question_id != 21 ) {
             $('#user_1_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
             $('#user_2_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
             // so player can choose from the new question
@@ -147,7 +150,8 @@ channel.bind('NextQuestion', function(data) {
     });
 
     $('#timer').delay( 1000 ).slideUp('fast' , function () {
-        if( data.question_id != 11 ) {
+        // to change the number of questions change the number 
+        if( data.question_id != 21 ) {
             $('#timer').slideDown('fast') ;
         }
     });
@@ -158,6 +162,7 @@ channel.bind('NextQuestion', function(data) {
 
 
 channel.bind('GameFinished', function(data) {
+    console.log('game finished');
 
     // to hide the forfeit button
     $('#forfeit-button').fadeOut('fast') ;

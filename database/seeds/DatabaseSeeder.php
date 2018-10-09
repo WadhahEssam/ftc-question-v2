@@ -6,7 +6,8 @@ class DatabaseSeeder extends Seeder
 {
     public $numberOfQuestions = 50 ;
     public $numberOfResults = 20 ;
-    public $numberOfSelectedQuestions = 10 ;
+    // to change the number of questions change the number 
+    public $numberOfSelectedQuestions = 20 ;
     /**
      * Seed the application's database.
      *
@@ -61,19 +62,15 @@ class DatabaseSeeder extends Seeder
 
     private function createQuestion() {
         $question = "" ;
-
         for ( $i = 0 ; $i < 10 ; $i++)
             $question = $question . str_random(rand(2,10)) . " " ;
-
         return $question ;
     }
 
     private function createOption () {
         $question = "" ;
-
         for ( $i = 0 ; $i < 3 ; $i++)
             $question = $question . str_random(rand(2,10)) . " " ;
-
         return $question ;
     }
 }

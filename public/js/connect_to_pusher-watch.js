@@ -172,8 +172,8 @@ channel.bind('playerAnswer', function(data) {
 channel.bind('NextQuestion', function(data) {
 
 
-
-    if ( data.question_id  == 11 ) {
+    // to change the number of questions change the number 
+    if ( data.question_id  == 21 ) {
 
     } else {
 
@@ -186,7 +186,8 @@ channel.bind('NextQuestion', function(data) {
             $('#user_2_state').html("<img class='user_state' src='images\\waiting.gif' height='20' >");
             $('#questions-counter').html("السؤال " + question_id) ;
             $('#ftc-logo').animateCss('rubberBand');
-            if( data.question_id != 11 ) {
+            // to change the number of questions change the number 
+            if( data.question_id != 21 ) {
                 $('#questions-counter').fadeIn('fast') ;
             }
 

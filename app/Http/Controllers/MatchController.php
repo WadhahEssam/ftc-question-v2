@@ -124,13 +124,13 @@ class MatchController extends Controller
             array_push($questionsId , $question->id ) ;
         }
 
-        $selectedQuestionsId = array_random($questionsId , 10) ;
+        $selectedQuestionsId = array_random($questionsId , 20) ;
 
         shuffle($selectedQuestionsId) ;
 
         $selectedQuestions = SelectedQuestion::all() ;
 
-        for ( $i = 0 ; $i < 10 ; $i++ ) {
+        for ( $i = 0 ; $i < 20 ; $i++ ) {
             $selectedQuestions[$i]->question_id = $selectedQuestionsId[$i] ;
             $selectedQuestions[$i]->save() ;
         }

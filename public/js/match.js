@@ -22,7 +22,6 @@ let playerNumber = 0 ; // it will be determined by the connecting event
 // one of the most important methods
 function optionPressed( questionId , option ) {
 
-
     if ( playerSelectedAnswer == 0 ) {
 
         playerSelectedAnswer = 1 ;
